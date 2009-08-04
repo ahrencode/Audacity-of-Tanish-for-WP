@@ -1,0 +1,571 @@
+/*  
+Theme Name: Audacity of Tanish
+Theme URI: http://ahren.org/code/tanish-wp
+Description: Low colour, minimal distractions, bottom bars, costumisable background image, with dynamic content show/hide capabilities. Please note this is version 0.9. Bugs probably lurk, and design is almost certain to change to some extent. SCREENSHOT DOESN'T DO JUSTICE ;-), CHECK THE DEMO/PREVIEW!
+Version: 0.9
+Author: Ravi Sarma
+Author URI: http://ahren.org/code/
+Tags: two-columns, flexible-width, theme-options, threaded-comments, black, dark
+
+	 Sarvodaya 0.9
+	 http://ahren.org/code/tanish-wp
+
+    This theme mimics Ahimsa in trying to minimise the
+    distractions to the reader through the use of clean
+    (mostly) primary colours, low graphics, etc.
+
+	The CSS, XHTML and design are released under the
+    latest GPL (at time of use):
+	http://www.opensource.org/licenses/gpl-license.php
+
+*/
+
+HTML,
+BODY
+{
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    width: 100%;
+    border-style: none;
+    background-color: #333333;
+    color: #ffffff;
+    font-size: medium;
+    font-family: Georgia, serif;
+}
+
+A
+{
+    color: #88ff55;
+    text-decoration: none;
+}
+
+A:hover
+{
+    text-decoration: none;
+}
+
+IMG
+{
+    border: none 0px;
+}
+
+BLOCKQUOTE
+{
+    border-left: 2px solid #aa3300;
+    padding: 5px 15px;
+    margin-left: 15px;
+    color: #dd9955;
+}
+
+#container
+{
+    padding-bottom: 60px;
+    background-color: #000000;
+}
+
+#header
+{
+    padding-top: 20px;
+    margin-bottom: 100px;
+}
+
+#header a
+{
+    color: #ffffff;
+}
+
+#title
+{
+    float: left;
+    font-size:  24pt;
+    margin-left: 30px;
+    margin-right: 15px;
+    padding: 3px 10px;
+    background-color: #aa3300;
+}
+
+#title a
+{
+    color: #ffffff;
+    text-decoration: none;
+}
+
+#description
+{
+    float: left;
+    padding: 3px 6px;
+    margin-top: 8px;
+    font-family: "Lucida Grande", sans-serif, Rockwell;
+}
+
+#rsslink
+{
+    float: right;
+    margin-right: 20px;
+    margin-top: 10px;
+}
+
+#bottombarbox
+{
+    clear: both;
+    color: #dddddd;
+    padding: 30px 20px;
+}
+
+.bottombar
+{
+    float: left;
+    width: 25%;
+    margin: 0px 20px;
+}
+
+.sbtitle
+{
+    cursor: pointer;
+    margin: 5px 0px;
+    padding-bottom: 3px;
+    border-bottom: 1px solid #777777;
+    font-size: medium;
+}
+
+.sbcontent
+{
+    display: none;
+    font-family: "Lucida Grande", sans-serif;
+    font-size: small;
+}
+
+.sbcontent UL
+{
+    margin-top: 3px;
+    margin-left: 0px;
+    padding-left: 0px;
+}
+
+.sbcontent UL LI
+{
+    margin-left: 15px;
+}
+
+/*
+#sidebartab
+{
+    width: 20px;
+    text-align: center;
+    position: fixed;
+    top: 100px;
+    left: 0px;
+    padding: 7px 0px;
+    font-size: smaller;
+    background-color: #883333;
+    color: #cccccc;
+    cursor: pointer;
+    opacity: 0.8;
+    filter: alpha(opacity = 80);
+}
+*/
+
+.hidden
+{
+    display: none;
+}
+
+#single,
+#indexpage,
+#comments
+{
+    clear: both;
+    margin: 0 10%;
+    border: 1px solid #666666;
+    border-left: 25px solid;
+    background-color: #222222;
+    padding: 30px;
+}
+
+#single,
+#indexpage
+{
+    border-left-color: #aa3300;
+}
+
+.post
+{
+    padding: 0px 10px;
+    clear: both;
+}
+
+#indexpage .postselected
+{
+    margin: 20px 0px !important;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-top: 3px solid #aa3300;
+    border-bottom: 3px solid #aa3300;
+}
+
+.posttitlebar
+{
+    border-bottom: 1px solid #666666;
+    font-size: x-large;
+    padding: 3px 0px;
+    cursor: pointer;
+}
+
+.posttitle 
+{
+    color: #4488e4;
+}
+
+.postselected .posttitle,
+#single .posttitle,
+#comments H2,
+#respond H3
+{
+    color: #4aa9ff;
+    font-size: xx-large;
+    font-weight: normal;
+}
+
+.dateauthor
+{
+    float: right;
+    text-align: right;
+    font-size: small;
+    margin-top: 4px;
+}
+
+.entry
+{
+    font-family: "Lucida Grande", sans-serif, Rockwell;
+    letter-spacing: 0.07em;
+    font-size: medium;
+    color: #dddddd;
+    margin-bottom: 30px;
+    padding: 5px 15px;
+}
+
+#indexpage .entry
+{
+    display: none;
+}
+
+.entry .avatar
+{
+    display: block;
+    margin: 10px 30px 5px 0px;
+    border: 1px solid #666666;
+    padding: 4px;
+    float: left;
+    opacity: 0.8;
+}
+
+.entry OL,
+.entry UL
+{
+    overflow: auto;
+    list-style-type: square;
+    background-color: #181818;
+    margin: 0px 15px;
+    padding: 12px 10px;
+    padding-left: 35px;
+    border-left: 2px solid #333333;
+}
+
+.entry UL LI,
+.entry OL LI
+{
+    margin: 0px;
+    padding: 0px;
+}
+
+.postmetabox
+{
+    float: right;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    font-family: 'Lucida Grande', sans-serif;
+    font-size: small;
+}
+
+#indexpage .postmetabox
+{
+    display: none;
+}
+
+.showpostmeta
+{
+    float: right;
+    margin: 8px 0px; 
+    cursor: pointer;
+}
+
+#single .showpostmeta
+{
+    display: none;
+}
+
+.postmetadata
+{
+    display: none;
+    float: right;
+    clear: both;
+    background-color: #331100;
+    padding: 7px 15px;
+    border: 1px solid #666666;
+}
+
+#single .postmetadata
+{
+    display: block;
+    margin-top: 30px;
+}
+
+.postmetadata DIV
+{
+    border-bottom: 1px solid #666666;
+    padding-bottom: 3px;
+    margin-bottom: 3px;
+    white-space: nowrap;
+}
+
+.postcats,
+.posttags
+{
+    padding-top: 5px !important;
+    padding-bottom: 10px !important;
+}
+
+.postmetadata DIV:last-child
+{
+    border-bottom: none;
+}
+
+.postmetadata a
+{
+    color: #dddddd;
+}
+
+.clearpostmetafloat
+{
+    clear: both;
+    display: none;
+}
+
+.navigation
+{
+    font-size: x-large;
+    margin: 0px 10%;
+    margin-top: 20px;
+}
+
+#creditsbox
+{
+    position: static;
+    display: block;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    margin: 0px;
+    margin-top: 40px;
+    padding: 0px;
+    border: 0px none;
+    color: #4488e4;
+}
+
+#credits
+{
+    font-family: 'Lucida Grande', sans-serif;
+    float: right;
+    text-align: right;
+    margin: 0px;
+    padding: 3px 10px;
+}
+
+#comments
+{
+    margin-top: 40px;
+    padding: 20px 30px;
+    border-left-color: #666666;
+    background-color: #111111;
+}
+
+#comments H2
+{
+    margin-top: 0px;
+}
+
+.nocomments
+{
+    padding: 3px 8px;
+    background-color: #aa3300;
+    color: #ffffff;
+    font-size: large;
+}
+
+.comment
+{
+    list-style-type: none;
+}
+
+.comment > DIV
+{
+    clear: both;
+    padding: 25px;
+    font-family: "Lucida Grande";
+    overflow: auto;
+    margin-bottom: 20px;
+    background-color: #222222;
+}
+
+.bypostauthor > DIV
+{
+    border-left: 3px solid #eecc55 !important;
+}
+
+.comment P
+{
+    overflow: auto;
+}
+
+.comment-author,
+.comment-meta
+{
+    float: left;
+    clear: left;
+    width: 80px;
+    margin: 0px;
+    margin-right: 25px;
+    padding: 5px 0px 5px 0px;
+    border-right: 2px solid #aa3300;
+}
+
+.comment-author A,
+.comment-meta A
+{
+    color: #88ddff;
+}
+
+.comment-author IMG
+{
+    float: left;
+    clear: left;
+    margin-bottom: 6px;
+    border: 1px solid #666666;
+    padding: 4px;
+    opacity: 0.8;
+}
+
+.comment-author CITE
+{
+    float: left;
+    clear: left;
+}
+
+.says
+{
+    display: none;
+}
+
+.comment-meta A:last-child
+{
+    clear: both;
+}
+
+.reply
+{
+}
+
+#respond
+{
+    margin-top: 20px;
+    padding: 20px 10px;;
+    border-top: 2px solid #aa3300;
+    font-family: 'Lucida Grande', sans-serif;
+    background: url(images/Pen2.png?v=001) no-repeat center right;
+    /* the below prevents .bypostauthor class from applying a yellow left border */
+    border-left: none !important;
+}
+
+#respond H3
+{
+    font-size: x-large;
+    font-family: 'Georgia', serif;
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+.responduser
+{
+}
+
+.cancel-comment-reply:
+{
+    margin-bottom: 4px;
+}
+
+.bottombar #s,
+.respondfield INPUT,
+#comment
+{
+    border: 1px solid #666666;
+    background-color: #000000;
+    color: #ffffff;
+    font-family: "Lucida Grande", sans-serif;
+    font-size: medium;
+}
+
+#comment
+{
+    width: 85%;
+    opacity: 0.6;
+}
+
+/* required as per wordpress.org */
+
+.aligncenter, div.aligncenter
+{
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
+}
+
+.alignleft
+{
+   float: left;
+}
+
+.alignright
+{
+   float: right;
+}
+
+.wp-caption
+{
+   border: 1px solid #ddd;
+   text-align: center;
+   background-color: #f3f3f3;
+   padding-top: 4px;
+   margin: 10px;
+   /* optional rounded corners for browsers that support it */
+   border-radius: 3px;
+   -moz-border-radius: 3px;
+   -khtml-border-radius: 3px;
+   -webkit-border-radius: 3px;
+}
+
+.wp-caption img
+{
+   margin: 0;
+   padding: 0;
+   border: 0 none;
+}
+
+.wp-caption p.wp-caption-text
+{
+   font-size: 11px;
+   line-height: 17px;
+   padding: 0 4px 5px;
+   margin: 0;
+}
+
