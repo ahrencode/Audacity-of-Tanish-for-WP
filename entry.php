@@ -42,10 +42,6 @@
 
                     <?php if( get_the_category() ) : ?>
                         <div id='postcats-<?php the_ID(); ?>' class='postcats'>
-                            <img
-                                src='<?php print get_bloginfo('template_url') . "/images/briefcase.png"; ?>'
-                                style='margin-left: 5px;'
-                                align='right' alt='Categories' title='Categories' />
                             <?php
                                 foreach((get_the_category()) as $cat)
                                 {
@@ -60,10 +56,6 @@
 
                     <?php if( get_the_tags() ) : ?>
                         <div id='posttags-<?php the_ID(); ?>' class='posttags'>
-                            <img
-                                src='<?php print get_bloginfo('template_url') . "/images/tag-orange.png"; ?>'
-                                style='margin-left: 5px;'
-                                align='right' alt='Tags' title='Tags' />
                             <?php
                                 print
                                     get_the_tag_list(

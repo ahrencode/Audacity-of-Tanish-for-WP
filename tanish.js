@@ -3,6 +3,19 @@ $(document).ready
 (
     function()
     {
+        // IE specific hacks to deal with the fact that if you have any floating element
+        // inside another, then the inside one's width is set to 100%!
+        if( $.browser.msie )
+        {
+            $('#indexpage .showpostmeta').css('float', 'none');
+
+            // a few other things while we are at it
+            $('#comments').css('margin-top', '120px');
+
+            $('#upgrademsie').fadeIn('slow');
+            setTimeout(function() { $('#upgrademsie').fadeOut('slow'); }, 8000);
+        }
+
         $('.posttitlebar').click(showIndexPost);
         $('.showpostmeta').click(togglePostMeta);
         //$('#bottombarbox').mouseover(function() { $(this).find('.bottombar').show(); });

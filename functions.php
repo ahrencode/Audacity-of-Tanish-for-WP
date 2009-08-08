@@ -14,6 +14,7 @@ $options = get_option('tanish');
 # defaults
 if( ! isset($options['showauthors']) ) $options['showauthors'] = 1;
 if( ! isset($options['mainbgimage']) ) $options['mainbgimage'] = 'None';
+if( ! isset($options['iewarn'     ]) ) $options['iewarn'     ] = 0;
 # end defaults
 
 update_option('tanish', $options);
@@ -47,40 +48,44 @@ function tanish_options()
                     clear: right;
                     float: right;
                     margin-top: 10px;
-                    margin-right: 10px;
+                    margin-right: 0px;
+                    margin-left: 20px;
                     background-color: #fff3cc;
                     color: #000000;
-                    padding: 10px;
-                    border: 1px solid #ddc055; width: 25%;
+                    padding: 10px 15px;
+                    border: 2px solid #ddc055; width: 25%;
+                    border-right: none;
+                    width: 150px;
                 '
         >
-            <h3>Keep up with Audacity of Tanish For WordPress</h3>
+            <h3>Keep up with Audacity of Tanish</h3>
 
             <p>
-                Follow on Tumblr or Twitter, or join the Facebook Page.
-                The other forums will have at most a post or two a day.
+                Follow on Ahren Code blog or Twitter, or join the Facebook Page.
             </p>
 
             <ul>
             <li style='list-style-type: circle; margin-left: 10px;'>
-                Posterous:
-                <a href='http://ahrencode.posterous.com/tag/tanish-wp'>Audacity of Tanish</a> |
-                <a href='http://ahrencode.posterous.com'>Ahren Code</a>
+                Blog:
+                <ul>
+                <li><a href='http://ahren.org/code/tag/tanish-wp'>Audacity of Tanish</a></li>
+                <li><a href='http://ahren.org/code/'>Ahren Code</a></li>
+                </ul>
             </li>
             <li style='list-style-type: circle; margin-left: 10px;'>
                 Twitter:
-                <a href='http://search.twitter.com/search?q=%23tanish-wp'>Audacity of Tanish</a> |
-                <a href='http://twitter.com/ahrencode/'>Ahren Code</a>
+                <ul>
+                <li><a href='http://search.twitter.com/search?q=%23tanish-wp'>Audacity of Tanish</a></li>
+                <li><a href='http://twitter.com/ahrencode/'>Ahren Code</a></li>
+                </ul>
             </li>
             <li style='list-style-type: circle;  margin-left: 10px;'>
                 <a
                 href='http://www.facebook.com/home.php#/pages/Ahren-Code/64305786260'>Facebook</a>
             </li>
             <li style='list-style-type: circle;  margin-left: 10px;'>
-                <a href='http://ahren.org/code/tag/tanish-wp'>Blog</a>
-            </li>
-            <li style='list-style-type: circle;  margin-left: 10px;'>
-                <a href='http://ahrencode.16bugs.com/projects/3703'>Bugs and Features</a>
+                <a href='http://github.com/ahrencode/Audacity-of-Tanish-for-WP/issues'>Bugs and
+                Features</a>
             </li>
             </ul>
         </div>
@@ -94,18 +99,35 @@ function tanish_options()
 
             <input type='checkbox' name='showauthors' id='showauthors'" .
                 ($options['showauthors'] == 1 ? ' checked' : '') . " />
-            <label style='margin-left: 5px;' for='showauthors'>Show Authors in Sidebar</label><br />
+            <label style='margin-left: 5px;' for='showauthors'>Show Authors in Sidebar</label>
+
+            <br />
+
+            <input type='checkbox' name='iewarn' id='iewarn'" .
+                ($options['iewarn'] == 1 ? ' checked' : '') . " />
+            <label style='margin-left: 5px;' for='iewarn'>
+                Offer helpful upgrade suggestions to Internet Explorer users ;-)
+            </label>
 
             <br/>
             <br/>
+
+            <h3>Background Image</h3>
 
             <label for='mainbgimage'>Choose main background image:</label><br />
+
             <br/>
 
     ";
 
+    $ctr = 1;
     foreach( $mainbgimages as $image )
     {
+        if( $ctr > 0 && ($ctr % 3) == 0 )
+            print "<br /><br />\n";
+
+        $ctr++;
+
         $checked = "";
         if( $options['mainbgimage'] == $image )
             $checked = "checked";
@@ -115,10 +137,9 @@ function tanish_options()
             print $image;
         else
             print "<img alt='$image' title='$image' height='32' align='middle'
-                    src='" . get_bloginfo('template_directory') . "/images/$image.png' />
-            ";
+                    src='" . get_bloginfo('template_directory') . "/images/$image.png' />";
 
-        print "&nbsp;&nbsp;";
+        print "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
     }
 
     print
@@ -131,6 +152,20 @@ function tanish_options()
             <p class='submit'><input type='submit' value='Save Changes' name='save'/></p>
 
         </form>
+
+        <div style='width: 60%; margin-top: 50px; background-color: #cceeff; border: 1px solid #88bbcc; padding:
+       30px;'>
+            Icons courtesy of:
+                <a href='http://www.Tutorial9.net/'>Tutorial9</a>
+                (Designer: <a href='http://www.ilovecolors.com.ar/'>ilovecolors</a>),
+                <a href='http://jonasraskdesign.com'>JONASRASKDESIGN</a>,
+                <a href='http://www.visualpharm.com/animals_icon_set/'>VisualPharm</a>,
+                <a href='http://pixel-mixer.com/'>Pixel Mixer</a>,
+                <a href='http://c9-d.com/blog-105.html#nav'>C9 Design Rinoa icons</a>,
+                <a href='http://www.icojoy.com'>Icojoy</a>,
+                <a href='http://www.midtonedesign.com'>midtone design</a>
+        </div>
+                
     ";
 }
 
@@ -139,6 +174,7 @@ function save_options()
     global $_POST, $options;
 
     $options['showauthors']     = ( isset($_POST['showauthors']) ) ? 1 : 0;
+    $options['iewarn']          = ( isset($_POST['iewarn'     ]) ) ? 1 : 0;
     $options['mainbgimage']     = ( isset($_POST['mainbgimage']) ) ? $_POST['mainbgimage'] : "None";
 
     update_option('tanish', $options);

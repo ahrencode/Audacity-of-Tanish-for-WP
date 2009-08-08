@@ -216,7 +216,7 @@ if ( function_exists('wp_list_comments') ) :
 
     <div>
 
-        Sorry this theme does not support comments yet for versions of Wordpress &lt; 2.7.
+        Sorry this theme does not support comments yet for versions of WordPress &lt; 2.7.
 
     </div>
 

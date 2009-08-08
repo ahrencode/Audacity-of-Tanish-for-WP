@@ -1,13 +1,13 @@
 /*  
 Theme Name: Audacity of Tanish
 Theme URI: http://ahren.org/code/tanish-wp
-Description: Low colour, minimal distractions, bottom bars, costumisable background image, with dynamic content show/hide capabilities. Please note this is version 0.9. Bugs probably lurk, and design is almost certain to change to some extent. SCREENSHOT DOESN'T DO JUSTICE ;-), CHECK THE DEMO/PREVIEW!
-Version: 0.9
+Description: Low colour, minimal distractions, bottom bars, costumisable background image, with dynamic content show/hide capabilities. Needs WP >= 2.7 for full functionality. Please note this is version 0.9. Bugs probably lurk, and design is almost certain to change to some extent. SCREENSHOT DOESN'T DO JUSTICE ;-), CHECK THE DEMO/PREVIEW!
+Version: 0.9.1
 Author: Ravi Sarma
 Author URI: http://ahren.org/code/
 Tags: two-columns, flexible-width, theme-options, threaded-comments, black, dark
 
-	 Sarvodaya 0.9
+	 Audacity of Tanish 0.9.1
 	 http://ahren.org/code/tanish-wp
 
     This theme mimics Ahimsa in trying to minimise the
@@ -58,6 +58,28 @@ BLOCKQUOTE
     color: #dd9955;
 }
 
+#upgrademsie
+{
+    z-index: 5;
+    position: absolute;
+    display: none;
+    bottom: 0px;
+    left: 30%;
+    width: 40%;
+    border-left: 15px solid #aa3300;
+    background-color: #ffffff;
+    margin: 0px;
+    padding: 10px;
+    color: #aa3300;
+    font-size: large;
+}
+
+#upgrademsie IMG
+{
+    float: left;
+    margin-right: 10px;
+}
+
 #container
 {
     padding-bottom: 60px;
@@ -81,7 +103,7 @@ BLOCKQUOTE
     font-size:  24pt;
     margin-left: 30px;
     margin-right: 15px;
-    padding: 3px 10px;
+    padding: 4px 12px;
     background-color: #aa3300;
 }
 
@@ -148,24 +170,6 @@ BLOCKQUOTE
     margin-left: 15px;
 }
 
-/*
-#sidebartab
-{
-    width: 20px;
-    text-align: center;
-    position: fixed;
-    top: 100px;
-    left: 0px;
-    padding: 7px 0px;
-    font-size: smaller;
-    background-color: #883333;
-    color: #cccccc;
-    cursor: pointer;
-    opacity: 0.8;
-    filter: alpha(opacity = 80);
-}
-*/
-
 .hidden
 {
     display: none;
@@ -227,6 +231,11 @@ BLOCKQUOTE
     font-weight: normal;
 }
 
+#indexpage .posttitle
+{
+    letter-spacing: 0.07em;
+}
+
 .dateauthor
 {
     float: right;
@@ -240,9 +249,14 @@ BLOCKQUOTE
     font-family: "Lucida Grande", sans-serif, Rockwell;
     letter-spacing: 0.07em;
     font-size: medium;
-    color: #dddddd;
     margin-bottom: 30px;
     padding: 5px 15px;
+}
+
+.entry,
+#comments
+{
+    color: #bbbbbb;
 }
 
 #indexpage .entry
@@ -258,25 +272,40 @@ BLOCKQUOTE
     padding: 4px;
     float: left;
     opacity: 0.8;
+    filter: alpha(opacity = 80);
 }
 
 .entry OL,
 .entry UL
 {
     overflow: auto;
+    margin: 15px 35px 15px 15px;
+    padding: 0px 0px 0px 25px;
+    /* TODO: decide if we want these borders
+    border-top: 1px solid #444444;
+    border-bottom: 1px solid #444444;
+    */
+}
+
+.entry UL
+{
     list-style-type: square;
-    background-color: #181818;
-    margin: 0px 15px;
-    padding: 12px 10px;
-    padding-left: 35px;
-    border-left: 2px solid #333333;
 }
 
 .entry UL LI,
 .entry OL LI
 {
+    background-color: #222222;
     margin: 0px;
-    padding: 0px;
+    padding: 5px 10px;
+    border-bottom: 1px solid #444444;
+    border-left: 1px solid #444444;
+}
+
+.entry UL LI:last-child,
+.entry OL LI:last-child
+{
+    border-bottom: 0px none !important;
 }
 
 .postmetabox
@@ -308,11 +337,11 @@ BLOCKQUOTE
 .postmetadata
 {
     display: none;
-    float: right;
     clear: both;
     background-color: #331100;
     padding: 7px 15px;
     border: 1px solid #666666;
+    text-shadow: #000000 -2px -2px 4px;
 }
 
 #single .postmetadata
@@ -329,13 +358,6 @@ BLOCKQUOTE
     white-space: nowrap;
 }
 
-.postcats,
-.posttags
-{
-    padding-top: 5px !important;
-    padding-bottom: 10px !important;
-}
-
 .postmetadata DIV:last-child
 {
     border-bottom: none;
@@ -344,6 +366,25 @@ BLOCKQUOTE
 .postmetadata a
 {
     color: #dddddd;
+}
+
+.postcats,
+.posttags
+{
+    padding-top: 5px !important;
+    padding-bottom: 10px !important;
+    padding-right: 40px;
+    margin-top: 8px !important;
+}
+
+.postcats
+{
+    background: url(images/briefcase.png) no-repeat top right;
+}
+
+.posttags
+{
+    background: url(images/tag-orange.png) no-repeat top right;
 }
 
 .clearpostmetafloat
@@ -454,6 +495,7 @@ BLOCKQUOTE
     border: 1px solid #666666;
     padding: 4px;
     opacity: 0.8;
+    filter: alpha(opacity = 80);
 }
 
 .comment-author CITE
@@ -499,7 +541,7 @@ BLOCKQUOTE
 {
 }
 
-.cancel-comment-reply:
+.cancel-comment-reply
 {
     margin-bottom: 4px;
 }
@@ -519,6 +561,7 @@ BLOCKQUOTE
 {
     width: 85%;
     opacity: 0.6;
+    filter: alpha(opacity = 60);
 }
 
 /* required as per wordpress.org */

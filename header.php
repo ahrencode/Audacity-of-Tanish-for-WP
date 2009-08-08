@@ -62,8 +62,8 @@
             }
 
             if( $image != 'None' )
-                print "background: url( " . get_bloginfo('template_url').
-                    "/images/$image.png?v=063) no-repeat top 70% #000000;\n";
+                print "background: #000000 url(" . get_bloginfo('template_url').
+                    "/images/$image.png?v=063) no-repeat 70% 0%;\n";
         ?>
     }
 
@@ -83,6 +83,37 @@
 </head>
 
 <body>
+
+<?php if( $options['iewarn'] == 1 ) : ?>
+    <div id='upgrademsie'>
+        <a href='http://apple.com/safari/'>
+        <img
+            border=0
+            src='http://dl.getdropbox.com/u/1547415/general/icons/safari.png'
+            alt='Safari'
+            title='Safari'
+        />
+        <a href='http://getfirefox.com/'>
+        <img
+            border=0
+            src='http://dl.getdropbox.com/u/1547415/general/icons/firefox.png'
+            alt='Firefox'
+            title='Firefox'
+        />
+        </a>
+        <a href='http://apple.com/safari/'>
+        <img
+            border=0
+            src='http://dl.getdropbox.com/u/1547415/general/icons/chrome.png'
+            alt='Chrome'
+            title='Chrome'
+        />
+        </a>
+        You are using Internet Explorer. Have you considered upgrading?
+        <br clear='all' />
+    </div>
+<?php endif; ?>
+
 <div id='container'>
 
     <div id='rsslink'>
