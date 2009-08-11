@@ -2,12 +2,12 @@
 Theme Name: Audacity of Tanish
 Theme URI: http://ahren.org/code/tanish-wp
 Description: Low colour, minimal distractions, bottom bars, costumisable background image, with dynamic content show/hide capabilities. Needs WP >= 2.7 for full functionality. Please note this is version 0.9. Bugs probably lurk, and design is almost certain to change to some extent. SCREENSHOT DOESN'T DO JUSTICE ;-), CHECK THE DEMO/PREVIEW!
-Version: 0.9.1
+Version: 0.9.2
 Author: Ravi Sarma
 Author URI: http://ahren.org/code/
 Tags: two-columns, flexible-width, theme-options, threaded-comments, black, dark
 
-	 Audacity of Tanish 0.9.1
+	 Audacity of Tanish 0.9.2
 	 http://ahren.org/code/tanish-wp
 
     This theme mimics Ahimsa in trying to minimise the
@@ -56,6 +56,13 @@ BLOCKQUOTE
     padding: 5px 15px;
     margin-left: 15px;
     color: #dd9955;
+}
+
+PRE,
+CODE
+{
+    color: #ffeeaa;
+	font-family: monospace;
 }
 
 #upgrademsie
@@ -210,15 +217,32 @@ BLOCKQUOTE
 
 .posttitlebar
 {
+	cursor: pointer;
+}
+
+.posttitlebar,
+H1,
+H2,
+H3
+{
     border-bottom: 1px solid #666666;
-    font-size: x-large;
+}
+
+.posttitlebar,
+H1,
+H2,
+H3,
+H4,
+H5,
+H6
+{
     padding: 3px 0px;
-    cursor: pointer;
+    color: #4488e4;
 }
 
 .posttitle 
 {
-    color: #4488e4;
+    font-size: x-large;
 }
 
 .postselected .posttitle,
@@ -242,11 +266,13 @@ BLOCKQUOTE
     text-align: right;
     font-size: small;
     margin-top: 4px;
+    color: #ffffff;
 }
 
 .entry
 {
     font-family: "Lucida Grande", sans-serif, Rockwell;
+    line-height: 180%;
     letter-spacing: 0.07em;
     font-size: medium;
     margin-bottom: 30px;
@@ -338,6 +364,7 @@ BLOCKQUOTE
 {
     display: none;
     clear: both;
+    line-height: 160%;
     background-color: #331100;
     padding: 7px 15px;
     border: 1px solid #666666;
@@ -464,20 +491,14 @@ BLOCKQUOTE
     border-left: 3px solid #eecc55 !important;
 }
 
-.comment P
-{
-    overflow: auto;
-}
-
-.comment-author,
-.comment-meta
+.comment-author
 {
     float: left;
     clear: left;
     width: 80px;
     margin: 0px;
     margin-right: 25px;
-    padding: 5px 0px 5px 0px;
+    padding: 5px 10px 5px 0px;
     border-right: 2px solid #aa3300;
 }
 
@@ -509,13 +530,18 @@ BLOCKQUOTE
     display: none;
 }
 
-.comment-meta A:last-child
+.comment P
 {
-    clear: both;
+    overflow: auto;
+    margin-left: 120px;
+    line-height: 140%;
 }
 
-.reply
+.comment .reply
 {
+    clear: both;
+    float: left;
+    margin-top: 10px;
 }
 
 #respond
