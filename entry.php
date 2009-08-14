@@ -11,7 +11,10 @@
                     <?php the_time('M jS, Y') ?> by <?php the_author() ?>
                 </div>
 
-                <div class='posttitle'><?php the_title(); ?></div>
+                <div class='posttitle'>
+                    <?php the_title(); ?>
+                    <a class='titlepermalink' href='<?php the_permalink(); ?>'>&raquo;</a>
+                </div>
 
             </div>
 

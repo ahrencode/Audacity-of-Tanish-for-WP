@@ -56,6 +56,27 @@ BLOCKQUOTE
     padding: 5px 15px;
     margin-left: 15px;
     color: #dd9955;
+    overflow: auto;
+}
+
+TABLE
+{
+    border-style: none;
+    font-family: inherit;
+}
+
+TH
+{
+    border: 1px solid #aa3300;
+    padding: 2px 4px;
+    border-style: solid solid solid none;
+}
+
+TD
+{
+    border: 1px solid #444444;
+    padding: 2px 4px;
+    border-style: none solid solid none;
 }
 
 PRE,
@@ -192,6 +213,8 @@ CODE
     border-left: 25px solid;
     background-color: #222222;
     padding: 30px;
+    opacity: 0.97;
+    filter: alpha(opacity = 97);
 }
 
 #single,
@@ -215,11 +238,6 @@ CODE
     border-bottom: 3px solid #aa3300;
 }
 
-.posttitlebar
-{
-	cursor: pointer;
-}
-
 .posttitlebar,
 H1,
 H2,
@@ -238,6 +256,11 @@ H6
 {
     padding: 3px 0px;
     color: #4488e4;
+}
+
+#indexpage .posttitlebar
+{
+	cursor: pointer;
 }
 
 .posttitle 
@@ -260,13 +283,18 @@ H6
     letter-spacing: 0.07em;
 }
 
+.titlepermalink
+{
+    display: none;
+}
+
 .dateauthor
 {
     float: right;
     text-align: right;
     font-size: small;
     margin-top: 4px;
-    color: #ffffff;
+    color: #dddddd;
 }
 
 .entry
@@ -293,8 +321,7 @@ H6
 .entry .avatar
 {
     display: block;
-    margin: 10px 30px 5px 0px;
-    border: 1px solid #666666;
+    margin: 10px 20px 5px 0px;
     padding: 4px;
     float: left;
     opacity: 0.8;
@@ -365,7 +392,6 @@ H6
     display: none;
     clear: both;
     line-height: 160%;
-    background-color: #331100;
     padding: 7px 15px;
     border: 1px solid #666666;
     text-shadow: #000000 -2px -2px 4px;
@@ -420,6 +446,28 @@ H6
     display: none;
 }
 
+#subpagelinks
+{
+    clear: both;
+    margin-top: 10px;
+    padding-top: 15px;
+    border-top: solid 1px #666666;
+}
+
+#subpagelinks SPAN
+{
+    font-size: large;
+    font-weight: normal;
+}
+
+#subpagelinks A
+{
+    padding: 1px 6px 3px 6px;
+    border: 1px solid #666666;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
 .navigation
 {
     font-size: x-large;
@@ -471,12 +519,16 @@ H6
     font-size: large;
 }
 
-.comment
+.comment,
+.pingback,
+.trackback
 {
     list-style-type: none;
 }
 
-.comment > DIV
+.comment > DIV,
+.pingback > DIV,
+.trackback > DIV
 {
     clear: both;
     padding: 25px;
@@ -496,6 +548,7 @@ H6
     float: left;
     clear: left;
     width: 80px;
+    min-height: 60px;
     margin: 0px;
     margin-right: 25px;
     padding: 5px 10px 5px 0px;
@@ -530,14 +583,18 @@ H6
     display: none;
 }
 
-.comment P
+.comment P,
+.pingback P,
+.trackback P
 {
     overflow: auto;
     margin-left: 120px;
     line-height: 140%;
 }
 
-.comment .reply
+.comment .reply,
+.pingback .reply,
+.trackback .reply
 {
     clear: both;
     float: left;
@@ -561,6 +618,7 @@ H6
     font-family: 'Georgia', serif;
     margin-top: 6px;
     margin-bottom: 6px;
+    border-bottom: none !important;
 }
 
 .responduser
