@@ -28,10 +28,10 @@ BODY
     height: 100%;
     width: 100%;
     border-style: none;
-    background-color: #333333;
+    background-color: #000000;
     color: #ffffff;
     font-size: medium;
-    font-family: Georgia, serif;
+    font-family: "Lucida Grande", sans-serif;
 }
 
 A
@@ -52,8 +52,9 @@ IMG
 
 BLOCKQUOTE
 {
-    border-left: 2px solid #aa3300;
-    padding: 5px 15px;
+    border-left: 2px solid #bb2200;
+    padding: 5px 0px 5px 15px;
+    margin: 0px;
     margin-left: 15px;
     color: #dd9955;
     overflow: auto;
@@ -67,7 +68,7 @@ TABLE
 
 TH
 {
-    border: 1px solid #aa3300;
+    border: 1px solid #bb2200;
     padding: 2px 4px;
     border-style: solid solid solid none;
 }
@@ -86,43 +87,47 @@ CODE
 	font-family: monospace;
 }
 
-#upgrademsie
+.heading,
+H1,
+H2,
+H3,
+H4,
+H5,
+H6
 {
-    z-index: 5;
-    position: absolute;
-    display: none;
-    bottom: 0px;
-    left: 30%;
-    width: 40%;
-    border-left: 15px solid #aa3300;
-    background-color: #ffffff;
-    margin: 0px;
-    padding: 10px;
-    color: #aa3300;
-    font-size: large;
+    color: #5588ee;
 }
 
-#upgrademsie IMG
+.heading
 {
-    float: left;
-    margin-right: 10px;
+    font-family: Georgia, serif;
+    font-size: x-large;
+}
+
+
+#indexpage .posttitlebar .heading,
+#single .posttitlebar .heading
+{
+    font-weight: bold;
+}
+
+.postselected .posttitlebar .heading,
+#single .posttitlebar .heading,
+#comments > .heading,
+#respond > .heading
+{
+    font-size: xx-large;
 }
 
 #container
 {
     padding-bottom: 60px;
-    background-color: #000000;
 }
 
 #header
 {
     padding-top: 20px;
-    margin-bottom: 100px;
-}
-
-#header a
-{
-    color: #ffffff;
+    margin-bottom: 60px;
 }
 
 #title
@@ -131,8 +136,8 @@ CODE
     font-size:  24pt;
     margin-left: 30px;
     margin-right: 15px;
-    padding: 4px 12px;
-    background-color: #aa3300;
+    padding: 4px 16px;
+    background-color: #bb2200;
 }
 
 #title a
@@ -146,7 +151,6 @@ CODE
     float: left;
     padding: 3px 6px;
     margin-top: 8px;
-    font-family: "Lucida Grande", sans-serif, Rockwell;
 }
 
 #rsslink
@@ -159,15 +163,21 @@ CODE
 #bottombarbox
 {
     clear: both;
-    color: #dddddd;
-    padding: 30px 20px;
+    color: #aaaaaa;
+    padding: 50px 0px;
+    background-color: #222222;
+    background: #222222 url(images/darkhzgrad.png?v=2) repeat-x top left;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    width: 900px;
 }
 
 .bottombar
 {
     float: left;
-    width: 25%;
-    margin: 0px 20px;
+    width: 260px;
+    margin: 10px 20px;
 }
 
 .sbtitle
@@ -175,14 +185,13 @@ CODE
     cursor: pointer;
     margin: 5px 0px;
     padding-bottom: 3px;
-    border-bottom: 1px solid #777777;
+    border-bottom: 1px solid #444444;
     font-size: medium;
 }
 
 .sbcontent
 {
     display: none;
-    font-family: "Lucida Grande", sans-serif;
     font-size: small;
 }
 
@@ -193,14 +202,16 @@ CODE
     padding-left: 0px;
 }
 
-.sbcontent UL LI
+.sbcontent LI
 {
     margin-left: 15px;
+    padding: 3px 0px;
+    border-top: 1px solid #333333;
 }
 
-.hidden
+.sbcontent > UL > LI:first-child
 {
-    display: none;
+    border-top: none;
 }
 
 #single,
@@ -209,18 +220,19 @@ CODE
 {
     clear: both;
     margin: 0 10%;
-    border: 1px solid #666666;
+    border: 3px solid #666666;
     border-left: 25px solid;
-    background-color: #222222;
+    background-color: #181818;
     padding: 30px;
-    opacity: 0.97;
-    filter: alpha(opacity = 97);
+    opacity: 0.94;
+    filter: alpha(opacity = 94);
 }
 
 #single,
 #indexpage
 {
-    border-left-color: #aa3300;
+    border-color: #bb2200;
+    display: none;
 }
 
 .post
@@ -231,31 +243,16 @@ CODE
 
 #indexpage .postselected
 {
-    margin: 20px 0px !important;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    border-top: 3px solid #aa3300;
-    border-bottom: 3px solid #aa3300;
+    margin: 20px -55px 20px -70px !important;
+    padding: 20px 30px;
+    border: 3px solid #bb2200;
+    background-color: #111111;
 }
 
-.posttitlebar,
-H1,
-H2,
-H3
+.posttitlebar
 {
+    padding: 3px 0px 6px 0px;
     border-bottom: 1px solid #666666;
-}
-
-.posttitlebar,
-H1,
-H2,
-H3,
-H4,
-H5,
-H6
-{
-    padding: 3px 0px;
-    color: #4488e4;
 }
 
 #indexpage .posttitlebar
@@ -263,29 +260,26 @@ H6
 	cursor: pointer;
 }
 
-.posttitle 
+/*
+#single .posttitlebar
 {
-    font-size: x-large;
+    margin: -35px -60px 10px -80px;
+    padding: 10px 20px;
+    border: 3px solid #bb2200;
+    background-color: #111111;
 }
 
-.postselected .posttitle,
-#single .posttitle,
-#comments H2,
-#respond H3
+#single .posttitlebar .heading
 {
-    color: #4aa9ff;
-    font-size: xx-large;
-    font-weight: normal;
+    color: #ffffff;
+    font-weight: bold;
 }
 
-#indexpage .posttitle
+*/
+
+#indexpage .posttitlebar .heading
 {
     letter-spacing: 0.07em;
-}
-
-.titlepermalink
-{
-    display: none;
 }
 
 .dateauthor
@@ -294,16 +288,14 @@ H6
     text-align: right;
     font-size: small;
     margin-top: 4px;
-    color: #dddddd;
+    margin-left: 15px;
 }
 
 .entry
 {
-    font-family: "Lucida Grande", sans-serif, Rockwell;
     line-height: 180%;
     letter-spacing: 0.07em;
-    font-size: medium;
-    margin-bottom: 30px;
+    font-size: 10pt;
     padding: 5px 15px;
 }
 
@@ -313,7 +305,13 @@ H6
     color: #bbbbbb;
 }
 
-#indexpage .entry
+/*
+ * TODO:
+ * could make this just '.entry' once we are certain we want the jQuery
+ * effect for #single .entry
+ */
+#indexpage .entry,
+#single .entry
 {
     display: none;
 }
@@ -328,16 +326,22 @@ H6
     filter: alpha(opacity = 80);
 }
 
+.entry .morelink
+{
+    display: none;
+}
+
+#indexpage .entry .morelink
+{
+    display: block;
+}
+
 .entry OL,
 .entry UL
 {
     overflow: auto;
     margin: 15px 35px 15px 15px;
     padding: 0px 0px 0px 25px;
-    /* TODO: decide if we want these borders
-    border-top: 1px solid #444444;
-    border-bottom: 1px solid #444444;
-    */
 }
 
 .entry UL
@@ -348,7 +352,6 @@ H6
 .entry UL LI,
 .entry OL LI
 {
-    background-color: #222222;
     margin: 0px;
     padding: 5px 10px;
     border-bottom: 1px solid #444444;
@@ -366,7 +369,6 @@ H6
     float: right;
     margin-left: 20px;
     margin-bottom: 20px;
-    font-family: 'Lucida Grande', sans-serif;
     font-size: small;
 }
 
@@ -375,14 +377,14 @@ H6
     display: none;
 }
 
-.showpostmeta
+.postmetabutton
 {
     float: right;
     margin: 8px 0px; 
     cursor: pointer;
 }
 
-#single .showpostmeta
+#single .postmetabutton
 {
     display: none;
 }
@@ -401,6 +403,7 @@ H6
 {
     display: block;
     margin-top: 30px;
+    background-color: #222222;
 }
 
 .postmetadata DIV
@@ -470,9 +473,17 @@ H6
 
 .navigation
 {
+    font-family: Georgia, serif;
     font-size: x-large;
     margin: 0px 10%;
-    margin-top: 20px;
+    margin-top: 40px;
+}
+
+.navigation SPAN
+{
+    padding: 5px 12px;
+    background-color: #000000;
+    opacity: 0.7;
 }
 
 #creditsbox
@@ -483,15 +494,15 @@ H6
     bottom: 0;
     width: 100%;
     margin: 0px;
-    margin-top: 40px;
     padding: 0px;
     border: 0px none;
-    color: #4488e4;
+    background-color: #000000;
+    opacity: 0.6;
+    filter: alpha(opacity = 60);
 }
 
 #credits
 {
-    font-family: 'Lucida Grande', sans-serif;
     float: right;
     text-align: right;
     margin: 0px;
@@ -500,21 +511,16 @@ H6
 
 #comments
 {
-    margin-top: 40px;
+    margin: 0px 12% 40px 12%;
+    border-top: 0px none;
     padding: 20px 30px;
     border-left-color: #666666;
-    background-color: #111111;
-}
-
-#comments H2
-{
-    margin-top: 0px;
 }
 
 .nocomments
 {
     padding: 3px 8px;
-    background-color: #aa3300;
+    background-color: #bb2200;
     color: #ffffff;
     font-size: large;
 }
@@ -532,7 +538,6 @@ H6
 {
     clear: both;
     padding: 25px;
-    font-family: "Lucida Grande";
     overflow: auto;
     margin-bottom: 20px;
     background-color: #222222;
@@ -540,7 +545,7 @@ H6
 
 .bypostauthor > DIV
 {
-    border-left: 3px solid #eecc55 !important;
+    background-color: #001015;
 }
 
 .comment-author
@@ -552,7 +557,7 @@ H6
     margin: 0px;
     margin-right: 25px;
     padding: 5px 10px 5px 0px;
-    border-right: 2px solid #aa3300;
+    border-right: 2px solid #bb2200;
 }
 
 .comment-author A,
@@ -588,8 +593,18 @@ H6
 .trackback P
 {
     overflow: auto;
-    margin-left: 120px;
     line-height: 140%;
+    /* TODO: check why we had the below in the first place! IE? Firefox? */
+    /* margin-left: 120px; */
+}
+
+/*
+ * don't let the above apply to reply boxes that have been dynanmically
+ * moved below the comment
+ */
+#respond P
+{
+    margin-left: 0px;
 }
 
 .comment .reply,
@@ -604,21 +619,15 @@ H6
 #respond
 {
     margin-top: 20px;
-    padding: 20px 10px;;
-    border-top: 2px solid #aa3300;
-    font-family: 'Lucida Grande', sans-serif;
+    padding: 30px 10px;
+    border-top: 2px solid #bb2200;
     background: url(images/Pen2.png?v=001) no-repeat center right;
-    /* the below prevents .bypostauthor class from applying a yellow left border */
-    border-left: none !important;
+    /* add below attributes to prevent .bypostauthor class from applying, if any */
 }
 
-#respond H3
+#respond .heading
 {
-    font-size: x-large;
-    font-family: 'Georgia', serif;
-    margin-top: 6px;
-    margin-bottom: 6px;
-    border-bottom: none !important;
+    margin-bottom: 10px;
 }
 
 .responduser
@@ -627,7 +636,10 @@ H6
 
 .cancel-comment-reply
 {
+    font-family: "Lucida Grande", sans-serif;
     margin-bottom: 4px;
+    margin-left: 10px;
+    font-size: medium;
 }
 
 .bottombar #s,
@@ -637,7 +649,6 @@ H6
     border: 1px solid #666666;
     background-color: #000000;
     color: #ffffff;
-    font-family: "Lucida Grande", sans-serif;
     font-size: medium;
 }
 
@@ -646,6 +657,28 @@ H6
     width: 85%;
     opacity: 0.6;
     filter: alpha(opacity = 60);
+}
+
+#upgrademsie
+{
+    z-index: 5;
+    position: absolute;
+    display: none;
+    bottom: 0px;
+    left: 30%;
+    width: 40%;
+    border-left: 15px solid #bb2200;
+    background-color: #ffffff;
+    margin: 0px;
+    padding: 10px;
+    color: #bb2200;
+    font-size: large;
+}
+
+#upgrademsie IMG
+{
+    float: left;
+    margin-right: 10px;
 }
 
 /* required as per wordpress.org */

@@ -11,16 +11,13 @@
                     <?php the_time('M jS, Y') ?> by <?php the_author() ?>
                 </div>
 
-                <div class='posttitle'>
-                    <?php the_title(); ?>
-                    <a class='titlepermalink' href='<?php the_permalink(); ?>'>&raquo;</a>
-                </div>
+                <div class='heading'><?php the_title(); ?></div>
 
             </div>
 
             <div class='postmetabox'>
 
-                <div class='showpostmeta'>
+                <div class='postmetabutton'>
                     <img
                         src='<?php print get_bloginfo('template_url') . "/images/info.png"; ?>'
                         alt='Info'
@@ -35,7 +32,7 @@
 
                     <?php edit_post_link('Edit Entry', '<div><li>', '</li></div>'); ?>
 
-                    <?php if( is_home() ): ?>
+                    <?php if( ! is_single() ): ?>
                     <div>
                         <li>
                             <?php comments_popup_link('No Comments', '1 Comment', '% Comments'); ?>
@@ -81,7 +78,12 @@
                         echo get_avatar(get_the_author_id(), '50');
                 ?>
 
-                <?php the_content('Read the rest of this entry &raquo;'); ?>
+                <?php the_content('', FALSE, ''); ?>
+
+                <a
+                        class='morelink'
+                        title='Click to view post and comments'
+                        href='<?php the_permalink(); ?>'>Read the full post and comments &raquo;</a>
 
             </div>
 
@@ -103,7 +105,7 @@
 <?php else : ?>
 
     <div class="post">
-        <div class='posttitle'>Not Found</div>
+        <div class='heading'>Not Found</div>
             <br/>
             <div class='entry'>
                 Sorry, but you are looking for something that isn't here.

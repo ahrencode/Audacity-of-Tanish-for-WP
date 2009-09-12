@@ -45,40 +45,30 @@
     <script type="text/javascript" src="<?php print get_bloginfo('template_url').'/jquery-min.js'; ?>"></script>
     <script type="text/javascript" src="<?php print get_bloginfo('template_url').'/tanish.js'; ?>"></script>
 
-<!-- set background based on user preference -->
+    <!-- load shortcode handlers -->
+    <?php include_once("shortcodes.php"); ?>
+
+    <!-- set backgrounds, credits, etc based on user preference -->
+
     <style type='text/css'>
 
-    #container
-    {
-        <?php
-
-            global $options, $mainbgimages;
-
-            $image = $options['mainbgimage'];
-            if( $image == "Random" )
-            {
-                $randidx = rand(2, sizeof($mainbgimages)-1);
-                $image = $mainbgimages[$randidx];
-            }
-
-            if( $image != 'None' )
-                print "background: #000000 url(" . get_bloginfo('template_url').
-                    "/images/$image.png?v=063) no-repeat 70% 0%;\n";
-        ?>
-    }
+        <?php print bg_images_css("#bgtilediv", 'mainbgtile', 'bgtile', "repeat top left"); ?>
+        <?php print bg_images_css("#container", 'mainbgimage', 'bgimage', "no-repeat 70% 0%"); ?>
 
     </style>
 
-<?php
+    <?php print comments_hide_html(); ?>
 
-    // Load custom stylesheet
-    if( file_exists(TEMPLATEPATH . "/custom.css") )
-    {
-        $customstylesheet = get_bloginfo('template_url') . "/custom.css";
-        print "<link rel='stylesheet' href='$customstylesheet' type='text/css' media='screen'>\n";
-    }
+    <?php
 
-?>
+        // Load custom stylesheet
+        if( file_exists(TEMPLATEPATH . "/custom.css") )
+        {
+            $customstylesheet = get_bloginfo('template_url') . "/custom.css";
+            print "<link rel='stylesheet' href='$customstylesheet' type='text/css' media='screen'>\n";
+        }
+
+    ?>
 
 </head>
 
@@ -114,6 +104,13 @@
     </div>
 <?php endif; ?>
 
+<!--
+    without this extra wrapper div, setting background seems impossible. Setting
+    background for BODY causes incomplete tiling at the bottom when a post title
+    is clicked and the post expands down.
+-->
+
+<div id='bgtilediv'>
 <div id='container'>
 
     <div id='rsslink'>
@@ -124,9 +121,10 @@
     </div>
 
     <div id='header'>
-        <div id='title'>
+        <div id='title' class='heading'>
             <a href="<?php echo get_option('home'); ?>/"><?php bloginfo('name'); ?></a>
         </div>
         <div id='description'> <?php bloginfo('description'); ?></div>
+        <br clear='all' />
     </div>
 

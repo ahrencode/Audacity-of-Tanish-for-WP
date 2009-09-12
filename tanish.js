@@ -7,7 +7,7 @@ $(document).ready
         // inside another, then the inside one's width is set to 100%!
         if( $.browser.msie )
         {
-            $('#indexpage .showpostmeta').css('float', 'none');
+            $('#indexpage .postmetabutton').css('float', 'none');
 
             // a few other things while we are at it
             $('#comments').css('margin-top', '120px');
@@ -17,7 +17,7 @@ $(document).ready
         }
 
         $('#indexpage .posttitlebar').click(showIndexPost);
-        $('#indexpage .showpostmeta').click(togglePostMeta);
+        $('#indexpage .postmetabutton').click(togglePostMeta);
 
         $('.sbtitle').click(toggleSBList);
         //$('#bottombarbox').mouseover(function() { $(this).find('.bottombar').show(); });
@@ -26,6 +26,10 @@ $(document).ready
         $('#single .postmetadata').fadeTo('slow', 0.4);
         $('#single .postmetadata').mouseenter( function() { $(this).fadeTo('fast', 1.0); } );
         $('#single .postmetadata').mouseleave( function() { $(this).fadeTo('slow', 0.4); } );
+
+        $('#indexpage').fadeIn('slow');
+        $('#single').fadeIn('slow');
+        $('#single .entry').fadeIn(2000);
     }
 );
  
@@ -40,7 +44,6 @@ function showIndexPost()
     $('.entry').slideUp();
     $('.postmetabox').hide();   // hide the (I) icon by hiding the postmetabox
     $('.postmetadata').hide();
-    $('.titlepermalink').hide();
     $('.post').removeClass('postselected');
     $('#indexpage .post').css('opacity', '1.0');
 
@@ -49,7 +52,6 @@ function showIndexPost()
         $(this).parent().addClass('postselected');
         $(this).parent().find('.entry').slideDown('slow');
         $(this).parent().find('.postmetabox').show('slow');
-        $(this).find('.titlepermalink').show();
         $('#indexpage .post').filter(":not(.postselected)").css('opacity', '0.7');
     }
 }

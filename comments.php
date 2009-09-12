@@ -28,27 +28,26 @@ if ( function_exists('wp_list_comments') ) :
         <img border=0 align='right' width='32' height='32'
             src='<?php print bloginfo('template_directory') . "/images/rssorange.png"; ?>'></a>
 
-        <h2>
+        <div id='commentsheader' class='heading'>
             <img alt='' title='' align='middle'
                 src='<?php print get_bloginfo('template_url') . "/images/bubble_48.png"; ?>'>
-            Comments
-        </h2>
+            Read Comments and Respond
+        </div>
 
         <i><?php comments_number('No Responses', 'One Response', '% Responses' );?></i>
 
         <br />
         <br />
 
+        <div id='commentscontainer'>
         <?php if ( have_comments() ) : ?>
 
             <?php wp_list_comments('type=all&avatar_size=48'); ?>
 
             <div class="navigation">
                 <?php
-                    previous_comments_link('<span class="capsule" style="float: left;">' .
-                                            '&laquo; previous</span>');
-                    next_comments_link('<span class="capsule" style="float: right;">' .
-                                            'next &raquo;</span>');
+                    previous_comments_link('<span style="float: left;">&laquo; previous</span>');
+                    next_comments_link('<span style="float: right;">next &raquo;</span>');
                 ?>
                 <br clear='all'/>
             </div>
@@ -77,10 +76,14 @@ if ( function_exists('wp_list_comments') ) :
 
             <div id="respond">
 
-                <h3><?php comment_form_title( 'Leave a Reply', 'Leave a Reply to %s' ); ?></h3>
+                <div class='heading'>
 
-                <div class="cancel-comment-reply">
-                    <?php cancel_comment_reply_link(); ?>
+                    <?php comment_form_title( 'Leave a Reply', 'Leave a Reply to %s' ); ?>
+
+                    <span class="cancel-comment-reply">
+                        <?php cancel_comment_reply_link(); ?>
+                    </span>
+
                 </div>
 
                 <?php if ( get_option('comment_registration') && !is_user_logged_in() ) : ?>
@@ -192,6 +195,7 @@ if ( function_exists('wp_list_comments') ) :
             </div> <!-- id=respond -->
 
         <?php endif; // commments open then show response box ?>
+        </div> <!-- id=commentscontainer -->
 
     </div> <!-- comments -->
 

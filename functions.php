@@ -1,20 +1,18 @@
 <?php
 
-$mainbgimages = array
-                (
-                    "None", "Random", "Butterfly", "Dolphin", "Elephant", "Froggy",
-                    "Lion", "Panda", "Pen", "Penguin", "Toucan"
-                );
-
 if( ! is_array(get_option('tanish')) )
     add_option('tanish', array('init' => 1));
 
 $options = get_option('tanish');
 
 # defaults
-if( ! isset($options['showauthors']) ) $options['showauthors'] = 1;
-if( ! isset($options['mainbgimage']) ) $options['mainbgimage'] = 'None';
-if( ! isset($options['iewarn'     ]) ) $options['iewarn'     ] = 0;
+if( ! isset($options['showauthors' ]) ) $options['showauthors' ] = 0;
+if( ! isset($options['expandfirst' ]) ) $options['expandfirst '] = 0;
+if( ! isset($options['showcredits' ]) ) $options['showcredits '] = 1;
+if( ! isset($options['hidecomments']) ) $options['hidecomments'] = 0;
+if( ! isset($options['mainbgimage' ]) ) $options['mainbgimage '] = 'None';
+if( ! isset($options['mainbgtile'  ]) ) $options['mainbgtile ' ] = 'None';
+if( ! isset($options['iewarn'      ]) ) $options['iewarn'      ] = 0;
 # end defaults
 
 update_option('tanish', $options);
@@ -36,7 +34,7 @@ function tanish_admin_menu()
 //-------------------------------------------------------------------------------
 function tanish_options()
 {
-    global $options, $mainbgimages;
+    global $options;
 
     if( $_POST['action'] == 'save' )
         save_options();
@@ -61,7 +59,8 @@ function tanish_options()
             <h3>Keep up with Audacity of Tanish</h3>
 
             <p>
-                Follow on Ahren Code blog or Twitter, or join the Facebook Page.
+                Follow on Twitter, or join the Facebook Page. Subscribe to the blog.
+                Create bug/feature requests, download the latest code, and more!
             </p>
 
             <ul>
@@ -84,8 +83,8 @@ function tanish_options()
                 href='http://www.facebook.com/home.php#/pages/Ahren-Code/64305786260'>Facebook</a>
             </li>
             <li style='list-style-type: circle;  margin-left: 10px;'>
-                <a href='http://github.com/ahrencode/Audacity-of-Tanish-for-WP/issues'>Bugs and
-                Features</a>
+                <a href='http://github.com/ahrencode/Audacity-of-Tanish-for-WP/issues'>
+                    Changes, Bugs and Features</a>
             </li>
             </ul>
         </div>
@@ -103,6 +102,30 @@ function tanish_options()
 
             <br />
 
+            <input type='checkbox' name='expandfirst' id='expandfirst'" .
+                ($options['expandfirst'] == 1 ? ' checked' : '') . " />
+            <label style='margin-left: 5px;' for='expandfirst'>
+                In home page (posts mode) expand top most (latest) post
+            </label>
+
+            <br />
+
+            <input type='checkbox' name='showcredits' id='showcredits'" .
+                ($options['showcredits'] == 1 ? ' checked' : '') . " />
+            <label style='margin-left: 5px;' for='showcredits'>
+                Show credits at the bottom
+            </label>
+
+            <br />
+
+            <input type='checkbox' name='hidecomments' id='hidecomments'" .
+                ($options['hidecomments'] == 1 ? ' checked' : '') . " />
+            <label style='margin-left: 5px;' for='hidecomments'>
+                Make comments collapsible/expandable on posts/pages
+            </label>
+
+            <br />
+
             <input type='checkbox' name='iewarn' id='iewarn'" .
                 ($options['iewarn'] == 1 ? ' checked' : '') . " />
             <label style='margin-left: 5px;' for='iewarn'>
@@ -112,48 +135,27 @@ function tanish_options()
             <br/>
             <br/>
 
-            <h3>Background Image</h3>
+            <h3>Background Images</h3>
 
-            <label for='mainbgimage'>Choose main background image:</label><br />
+            <label for='mainbgtile'>Choose background (tile):</label><br />
 
-            <br/>
-
-    ";
-
-    $ctr = 1;
-    foreach( $mainbgimages as $image )
-    {
-        if( $ctr > 0 && ($ctr % 3) == 0 )
-            print "<br /><br />\n";
-
-        $ctr++;
-
-        $checked = "";
-        if( $options['mainbgimage'] == $image )
-            $checked = "checked";
-
-        print "<input type='radio' name='mainbgimage' value='$image' $checked>";
-        if( $image == "None" || $image == "Random" )
-            print $image;
-        else
-            print "<img alt='$image' title='$image' height='32' align='middle'
-                    src='" . get_bloginfo('template_directory') . "/images/$image.png' />";
-
-        print "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-    }
-
-    print
     "
-            <br/>
+        . images_dir_html("bgtile", 4, 'mainbgtile') .
+    "
+            <label for='mainbgimage'>Choose background image:</label><br />
+    "
+        . images_dir_html("bgimage", 4, 'mainbgimage') .
+    "
+            </div>
+            <br clear='all' />
             <br/>
             <hr size='1'/>
-
 
             <p class='submit'><input type='submit' value='Save Changes' name='save'/></p>
 
         </form>
 
-        <div style='width: 60%; margin-top: 50px; background-color: #cceeff; border: 1px solid #88bbcc; padding:
+        <div style='width: 60%; margin: 30px 40px; background-color: #cceeff; border: 1px solid #88bbcc; padding:
        30px;'>
             Icons courtesy of:
                 <a href='http://www.Tutorial9.net/'>Tutorial9</a>
@@ -163,19 +165,155 @@ function tanish_options()
                 <a href='http://pixel-mixer.com/'>Pixel Mixer</a>,
                 <a href='http://c9-d.com/blog-105.html#nav'>C9 Design Rinoa icons</a>,
                 <a href='http://www.icojoy.com'>Icojoy</a>,
-                <a href='http://www.midtonedesign.com'>midtone design</a>
+                <a href='http://www.midtonedesign.com'>midtone design</a>.
+            Textures from:
+                <a href='http://www.grsites.com/'>grsites.com</a>.
+            JavaScript Goodies:
+                <a href='http://jquery.com/'>jQuery</a>.
         </div>
                 
     ";
 }
 
+//------------------------------------------------------------------------------
+function images_dir_html($dir, $count, $fldname)
+{
+    global $options;
+
+    $html =
+    "
+        <br/>
+
+        <div style=
+            '
+                float: left;
+                padding: 15px;
+                background-color: #eeeeee;
+                color: #000000;
+                -webkit-border-radius: 5px;
+                -moz-border-radius: 5px;
+            '
+        >
+    ";
+
+    $ctr = $count - 2;
+    foreach( array_merge(array("None", "Random"), scandir(TEMPLATEPATH . "/images/" . $dir)) as $image )
+    {
+        if( $image == '.' || $image == '..' )
+            continue;
+
+        if( $ctr > 0 && ($ctr % $count) == 0 )
+            $html .= "<br /><br />\n";
+
+        $ctr++;
+
+        $checked = "";
+        if( $options[$fldname] == $image )
+            $checked = "checked";
+
+        $html .= "<input type='radio' name='$fldname' value='$image' $checked>";
+
+        if( $image == "None" || $image == "Random" )
+            $html .= $image;
+        else
+            $html .= "<img alt='$image' title='$image' height='64' width='64' align='middle'
+                    src='" . get_bloginfo('template_directory') . "/images/$dir/$image' />";
+
+        $html .= "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+    }
+
+    $html .=
+    "
+        </div>
+        <br clear='left' />
+        <br />
+    ";
+
+    return($html);
+}
+
+//------------------------------------------------------------------------------
+function comments_hide_html()
+{
+    global $options;
+
+    if( $options['hidecomments'] != 1 )
+        return;
+
+    // Could check for is_single() or some such here but do we really
+    // save much by doing so? The logic is safe even without the check
+    // since the jQuery will fire only for #single.
+    print
+    "
+        <style type='text/css'>
+
+            #commentsheader
+            {
+                cursor: pointer;
+            }
+
+            #commentscontainer
+            {
+                display: none;
+            }
+
+        </style>
+
+        <script language='JavaScript'>
+
+            $(document).ready
+            (
+                function()
+                {
+                    $('#commentsheader').click(function() { $('#commentscontainer').toggle(500); });
+                }
+            );
+
+        </script>
+    ";
+}
+
+//------------------------------------------------------------------------------
+function bg_images_css($selector, $optname, $imgdir, $pos_repeat)
+{
+    global $options;
+
+    $image = $options[$optname];
+
+    if( $image == 'None' )
+        return;
+
+    if( $image == "Random" )
+    {
+        $images = preg_grep("/^\./", scandir(TEMPLATEPATH . "/images/" . $imgdir), PREG_GREP_INVERT);
+        $randidx = rand(2, sizeof($images)-1);
+        $image = $images[$randidx];
+    }
+
+    // the v=$randidx below is because Firefox refuses to reload a background image
+    // unless the URL has changed.
+    return
+    ("
+        $selector
+        {
+            background: url(" . get_bloginfo('template_url') .
+                            "/images/$imgdir/$image?v=$randidx) $pos_repeat;
+        }
+    ");
+}
+
+//------------------------------------------------------------------------------
 function save_options()
 {
     global $_POST, $options;
 
-    $options['showauthors']     = ( isset($_POST['showauthors']) ) ? 1 : 0;
-    $options['iewarn']          = ( isset($_POST['iewarn'     ]) ) ? 1 : 0;
-    $options['mainbgimage']     = ( isset($_POST['mainbgimage']) ) ? $_POST['mainbgimage'] : "None";
+    $options['showauthors' ]    = ( isset($_POST['showauthors' ]) ) ? 1 : 0;
+    $options['expandfirst' ]    = ( isset($_POST['expandfirst' ]) ) ? 1 : 0;
+    $options['showcredits' ]    = ( isset($_POST['showcredits' ]) ) ? 1 : 0;
+    $options['hidecomments']    = ( isset($_POST['hidecomments']) ) ? 1 : 0;
+    $options['iewarn'      ]    = ( isset($_POST['iewarn'      ]) ) ? 1 : 0;
+    $options['mainbgimage' ]    = ( isset($_POST['mainbgimage' ]) ) ? $_POST['mainbgimage'] : "None";
+    $options['mainbgtile'  ]    = ( isset($_POST['mainbgtile'  ]) ) ? $_POST['mainbgtile' ] : "None";
 
     update_option('tanish', $options);
 
