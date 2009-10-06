@@ -53,7 +53,7 @@
     <style type='text/css'>
 
         <?php print bg_images_css("#bgtilediv", 'mainbgtile', 'bgtile', "repeat top left"); ?>
-        <?php print bg_images_css("#container", 'mainbgimage', 'bgimage', "no-repeat 70% 0%"); ?>
+        <?php print bg_images_css("#container", 'mainbgimage', 'bgimage', "no-repeat 80% 2%"); ?>
 
     </style>
 

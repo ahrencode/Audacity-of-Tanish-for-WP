@@ -1,23 +1,18 @@
 /*  
 Theme Name: Audacity of Tanish
 Theme URI: http://ahren.org/code/tanish-wp
-Description: Low colour, minimal distractions, bottom bars, costumisable background image, with dynamic content show/hide capabilities. Needs WP >= 2.7 for full functionality. Please note this is version 0.9. Bugs probably lurk, and design is almost certain to change to some extent. SCREENSHOT DOESN'T DO JUSTICE ;-), CHECK THE DEMO/PREVIEW!
-Version: 0.9.2
+Description: Dark configurable theme with JavaScript effects ;-), bottom bars, costumisable background image, dynamic content show/hide capabilities. Needs WP >= 2.7 for full functionality. SCREENSHOT DOESN'T DO JUSTICE ;-), CHECK THE DEMO/PREVIEW and the Dashboard/Admin options! New in this release: option to display latest post expanded in front page, background tile, other styling, extensive fixes, more complete IE (7,8) support, and a lot more. See <a href='http://ahren.org/code/bit/tanish-wp-1dot0'>http://ahren.org/code/bit/tanish-wp-1dot0</a> for full list of changes and <a href='http://ahren.org/code/tanish-wp'>http://ahren.org/code/tanish-wp</a> for features and screenshots.
+Version: 1.0.1
 Author: Ravi Sarma
 Author URI: http://ahren.org/code/
 Tags: two-columns, flexible-width, theme-options, threaded-comments, black, dark
 
-	 Audacity of Tanish 0.9.2
+	 Audacity of Tanish 1.0.1
 	 http://ahren.org/code/tanish-wp
-
-    This theme mimics Ahimsa in trying to minimise the
-    distractions to the reader through the use of clean
-    (mostly) primary colours, low graphics, etc.
 
 	The CSS, XHTML and design are released under the
     latest GPL (at time of use):
 	http://www.opensource.org/licenses/gpl-license.php
-
 */
 
 HTML,
@@ -30,7 +25,7 @@ BODY
     border-style: none;
     background-color: #000000;
     color: #ffffff;
-    font-size: medium;
+    font-size: 9pt;
     font-family: "Lucida Grande", sans-serif;
 }
 
@@ -57,6 +52,10 @@ BLOCKQUOTE
     margin: 0px;
     margin-left: 15px;
     color: #dd9955;
+}
+
+.comment BLOCKQUOTE
+{
     overflow: auto;
 }
 
@@ -77,7 +76,7 @@ TD
 {
     border: 1px solid #444444;
     padding: 2px 4px;
-    border-style: none solid solid none;
+    border-style: none dotted solid none;
 }
 
 PRE,
@@ -101,14 +100,7 @@ H6
 .heading
 {
     font-family: Georgia, serif;
-    font-size: x-large;
-}
-
-
-#indexpage .posttitlebar .heading,
-#single .posttitlebar .heading
-{
-    font-weight: bold;
+    font-size: 18pt;
 }
 
 .postselected .posttitlebar .heading,
@@ -116,7 +108,7 @@ H6
 #comments > .heading,
 #respond > .heading
 {
-    font-size: xx-large;
+    font-size: 20pt;
 }
 
 #container
@@ -136,7 +128,7 @@ H6
     font-size:  24pt;
     margin-left: 30px;
     margin-right: 15px;
-    padding: 4px 16px;
+    padding: 6px 16px;
     background-color: #bb2200;
 }
 
@@ -149,6 +141,7 @@ H6
 #description
 {
     float: left;
+    font-size: 12pt;
     padding: 3px 6px;
     margin-top: 8px;
 }
@@ -171,6 +164,12 @@ H6
     margin-right: auto;
     margin-bottom: 20px;
     width: 900px;
+    -webkit-border-bottom-left-radius: 15px;
+    -webkit-border-bottom-right-radius: 15px;
+    -khtml-border-bottom-left-radius: 15px;
+    -khtml-border-bottom-right-radius: 15px;
+    -moz-border-radius-bottomleft: 15px;
+    -moz-border-radius-bottomright: 15px;
 }
 
 .bottombar
@@ -186,13 +185,13 @@ H6
     margin: 5px 0px;
     padding-bottom: 3px;
     border-bottom: 1px solid #444444;
-    font-size: medium;
+    font-size: 10pt;
 }
 
 .sbcontent
 {
     display: none;
-    font-size: small;
+    font-size: 9pt;
 }
 
 .sbcontent UL
@@ -214,6 +213,34 @@ H6
     border-top: none;
 }
 
+#wp-calendar
+{
+    margin: 15px 5px;
+    border-style: solid none solid none;
+    border: 1px solid #666666;
+}
+
+#wp-calendar CAPTION
+{
+    margin-bottom: 5px;
+}
+
+#wp-calendar TH
+{
+    border-style: none none solid none;
+}
+
+#wp-calendar TD
+{
+    border-style: none;
+    text-align: right;
+}
+
+#searchform > LABEL
+{
+    display: none;
+}
+
 #single,
 #indexpage,
 #comments
@@ -224,8 +251,8 @@ H6
     border-left: 25px solid;
     background-color: #181818;
     padding: 30px;
-    opacity: 0.94;
-    filter: alpha(opacity = 94);
+    opacity: 0.96;
+    filter: alpha(opacity = 96);
 }
 
 #single,
@@ -286,17 +313,36 @@ H6
 {
     float: right;
     text-align: right;
-    font-size: small;
+    font-size: 9pt;
     margin-top: 4px;
     margin-left: 15px;
+}
+
+.post .avatar
+{
+    display: none;
+}
+
+#single .post .avatar
+{
+    display: block;
+    margin: 10px 20px 5px -90px;
+    background-color: #000000;
+    border: 2px solid #bb2200;
+    padding: 8px;
+    float: left;
+    /*
+    opacity: 0.8;
+    filter: alpha(opacity = 80);
+    */
 }
 
 .entry
 {
     line-height: 180%;
-    letter-spacing: 0.07em;
     font-size: 10pt;
     padding: 5px 15px;
+    display: inline;
 }
 
 .entry,
@@ -314,16 +360,6 @@ H6
 #single .entry
 {
     display: none;
-}
-
-.entry .avatar
-{
-    display: block;
-    margin: 10px 20px 5px 0px;
-    padding: 4px;
-    float: left;
-    opacity: 0.8;
-    filter: alpha(opacity = 80);
 }
 
 .entry .morelink
@@ -369,7 +405,7 @@ H6
     float: right;
     margin-left: 20px;
     margin-bottom: 20px;
-    font-size: small;
+    font-size: 9pt;
 }
 
 #indexpage .postmetabox
@@ -396,6 +432,7 @@ H6
     line-height: 160%;
     padding: 7px 15px;
     border: 1px solid #666666;
+    background-color: #222222;
     text-shadow: #000000 -2px -2px 4px;
 }
 
@@ -403,7 +440,11 @@ H6
 {
     display: block;
     margin-top: 30px;
-    background-color: #222222;
+}
+
+.postmetadata a
+{
+    color: #dddddd;
 }
 
 .postmetadata DIV
@@ -419,9 +460,18 @@ H6
     border-bottom: none;
 }
 
-.postmetadata a
+.postmetadata DIV UL
 {
-    color: #dddddd;
+    margin: 0px;
+    margin-left: 0px;
+    padding-left: 0px;
+}
+
+.postmetadata DIV LI
+{
+    margin: 0px;
+    margin-left: 15px;
+    padding: 3px 0px;
 }
 
 .postcats,
@@ -443,12 +493,6 @@ H6
     background: url(images/tag-orange.png) no-repeat top right;
 }
 
-.clearpostmetafloat
-{
-    clear: both;
-    display: none;
-}
-
 #subpagelinks
 {
     clear: both;
@@ -459,7 +503,7 @@ H6
 
 #subpagelinks SPAN
 {
-    font-size: large;
+    font-size: 11pt;
     font-weight: normal;
 }
 
@@ -474,7 +518,7 @@ H6
 .navigation
 {
     font-family: Georgia, serif;
-    font-size: x-large;
+    font-size: 14pt;
     margin: 0px 10%;
     margin-top: 40px;
 }
@@ -482,7 +526,7 @@ H6
 .navigation SPAN
 {
     padding: 5px 12px;
-    background-color: #000000;
+    background-color: #111111;
     opacity: 0.7;
 }
 
@@ -511,18 +555,38 @@ H6
 
 #comments
 {
-    margin: 0px 12% 40px 12%;
-    border-top: 0px none;
+    /*
+     * without the !important, which AFAIK is really not needed, IE does strange things
+     * for top margin (possibly because we set margins for #comments above as well.
+     */
+    margin: 0px 14% 40px 14% !important;
     padding: 20px 30px;
     border-left-color: #666666;
+    border-top: 0px none;
+    /*
+    border: none;
+    -webkit-border-bottom-left-radius: 20px;
+    -webkit-border-bottom-right-radius: 20px;
+    */
 }
+
+/*
+#commentsbotbar
+{
+    height: 25px;
+    margin: 0px -30px -20px -30px;
+    background-color: #bb2200;
+    -webkit-border-bottom-left-radius: 20px;
+    -webkit-border-bottom-right-radius: 20px;
+}
+*/
 
 .nocomments
 {
     padding: 3px 8px;
     background-color: #bb2200;
     color: #ffffff;
-    font-size: large;
+    font-size: 12pt;
 }
 
 .comment,
@@ -616,13 +680,25 @@ H6
     margin-top: 10px;
 }
 
+.comment .reply
+{
+    padding: 4px 8px;
+    background-color: #bb2200;
+    font-size: 10pt;
+}
+
+.reply A
+{
+    color: #ffffff;
+}
+
 #respond
 {
     margin-top: 20px;
     padding: 30px 10px;
     border-top: 2px solid #bb2200;
-    background: url(images/Pen2.png?v=001) no-repeat center right;
-    /* add below attributes to prevent .bypostauthor class from applying, if any */
+    background: url(images/bgimage/pen1.png?v=001) no-repeat center right;
+    /* add below, attributes to prevent .bypostauthor class from applying, if any */
 }
 
 #respond .heading
@@ -639,7 +715,7 @@ H6
     font-family: "Lucida Grande", sans-serif;
     margin-bottom: 4px;
     margin-left: 10px;
-    font-size: medium;
+    font-size: 10pt;
 }
 
 .bottombar #s,
@@ -649,7 +725,7 @@ H6
     border: 1px solid #666666;
     background-color: #000000;
     color: #ffffff;
-    font-size: medium;
+    font-size: 10pt;
 }
 
 #comment
@@ -672,7 +748,7 @@ H6
     margin: 0px;
     padding: 10px;
     color: #bb2200;
-    font-size: large;
+    font-size: 14pt;
 }
 
 #upgrademsie IMG

@@ -24,7 +24,6 @@ if ( function_exists('register_sidebar') )
     add_sidebars();
 
 
-
 //-------------------------------------------------------------------------------
 function tanish_admin_menu()
 {
@@ -39,58 +38,23 @@ function tanish_options()
     if( $_POST['action'] == 'save' )
         save_options();
 
+    print options_followinfo();
+
     print
     "
-        <div style=
-                '
-                    clear: right;
-                    float: right;
-                    margin-top: 10px;
-                    margin-right: 0px;
-                    margin-left: 20px;
-                    background-color: #fff3cc;
-                    color: #000000;
-                    padding: 10px 15px;
-                    border: 2px solid #ddc055; width: 25%;
-                    border-right: none;
-                    width: 150px;
-                '
-        >
-            <h3>Keep up with Audacity of Tanish</h3>
-
-            <p>
-                Follow on Twitter, or join the Facebook Page. Subscribe to the blog.
-                Create bug/feature requests, download the latest code, and more!
-            </p>
-
-            <ul>
-            <li style='list-style-type: circle; margin-left: 10px;'>
-                Blog:
-                <ul>
-                <li><a href='http://ahren.org/code/tag/tanish-wp'>Audacity of Tanish</a></li>
-                <li><a href='http://ahren.org/code/'>Ahren Code</a></li>
-                </ul>
-            </li>
-            <li style='list-style-type: circle; margin-left: 10px;'>
-                Twitter:
-                <ul>
-                <li><a href='http://search.twitter.com/search?q=%23tanish-wp'>Audacity of Tanish</a></li>
-                <li><a href='http://twitter.com/ahrencode/'>Ahren Code</a></li>
-                </ul>
-            </li>
-            <li style='list-style-type: circle;  margin-left: 10px;'>
-                <a
-                href='http://www.facebook.com/home.php#/pages/Ahren-Code/64305786260'>Facebook</a>
-            </li>
-            <li style='list-style-type: circle;  margin-left: 10px;'>
-                <a href='http://github.com/ahrencode/Audacity-of-Tanish-for-WP/issues'>
-                    Changes, Bugs and Features</a>
-            </li>
-            </ul>
-        </div>
-
         <form id='settings' action='' method='post' class='themeform'
             style='margin: 20px;'>
+
+            <h3>Customise this Theme</h3>
+
+            Want to customise this theme? Don't edit the stylesheets or PHP files
+            of this theme using the Theme Editor. Why not? Because when you use
+            the WP upgrade mechanism to upgrade this theme, it blows away all your
+            changes. The/One right way to customise themes is to create a 'child
+            theme' -- that will be a feature available in an upcoming release of
+            this theme. In the meantime, if you want to do the manual work, please
+            <a href='http://ahren.org/code/contact'>contact me</a> for
+            instructions.
 
             <h3>General</h3>
 
@@ -155,24 +119,74 @@ function tanish_options()
 
         </form>
 
-        <div style='width: 60%; margin: 30px 40px; background-color: #cceeff; border: 1px solid #88bbcc; padding:
-       30px;'>
-            Icons courtesy of:
-                <a href='http://www.Tutorial9.net/'>Tutorial9</a>
-                (Designer: <a href='http://www.ilovecolors.com.ar/'>ilovecolors</a>),
-                <a href='http://jonasraskdesign.com'>JONASRASKDESIGN</a>,
-                <a href='http://www.visualpharm.com/animals_icon_set/'>VisualPharm</a>,
-                <a href='http://pixel-mixer.com/'>Pixel Mixer</a>,
-                <a href='http://c9-d.com/blog-105.html#nav'>C9 Design Rinoa icons</a>,
-                <a href='http://www.icojoy.com'>Icojoy</a>,
-                <a href='http://www.midtonedesign.com'>midtone design</a>.
-            Textures from:
-                <a href='http://www.grsites.com/'>grsites.com</a>.
-            JavaScript Goodies:
-                <a href='http://jquery.com/'>jQuery</a>.
+        <div style='
+            width: 60%;
+            margin: 30px 0px;
+            background-color: #cceeff;
+            border: 1px solid #88bbcc;
+            padding: 30px;'
+        >
+            All graphics and libraries (jQuery and derivatives)
+            used in this theme are released by their respective authors as
+            either free (for unlimited free or commercial use, without
+            need for attribution), or under the GPL. Many thanks are owed to
+            them for their contribution to the public domain.
+
+            <br/>
+
         </div>
-                
     ";
+}
+
+//------------------------------------------------------------------------------
+function options_followinfo()
+{
+    return("
+        <div style=
+                '
+                    clear: right;
+                    float: right;
+                    margin: 10px 10px 10px 20px;
+                    background-color: #fff3cc;
+                    color: #000000;
+                    padding: 10px 15px;
+                    border: 2px solid #ddc055; width: 25%;
+                    width: 150px;
+                '
+        >
+            <h3>Keep up with Audacity of Tanish</h3>
+
+            <p>
+                Follow on Twitter, or join the Facebook Page. Subscribe to the blog.
+                Create bug/feature requests, download the latest code, and more!
+            </p>
+
+            <ul>
+            <li style='list-style-type: circle; margin-left: 10px;'>
+                Blog:
+                <ul>
+                <li><a href='http://ahren.org/code/tag/tanish-wp'>Audacity of Tanish</a></li>
+                <li><a href='http://ahren.org/code/'>Ahren Code</a></li>
+                </ul>
+            </li>
+            <li style='list-style-type: circle; margin-left: 10px;'>
+                Twitter:
+                <ul>
+                <li><a href='http://search.twitter.com/search?q=%23tanish-wp'>Audacity of Tanish</a></li>
+                <li><a href='http://twitter.com/ahrencode/'>Ahren Code</a></li>
+                </ul>
+            </li>
+            <li style='list-style-type: circle;  margin-left: 10px;'>
+                <a
+                href='http://www.facebook.com/home.php#/pages/Ahren-Code/64305786260'>Facebook</a>
+            </li>
+            <li style='list-style-type: circle;  margin-left: 10px;'>
+                <a href='http://github.com/ahrencode/Audacity-of-Tanish-for-WP/issues'>
+                    Changes, Bugs and Features</a>
+            </li>
+            </ul>
+        </div>
+    ");
 }
 
 //------------------------------------------------------------------------------
@@ -211,13 +225,18 @@ function images_dir_html($dir, $count, $fldname)
         if( $options[$fldname] == $image )
             $checked = "checked";
 
-        $html .= "<input type='radio' name='$fldname' value='$image' $checked>";
+        $html .= "<input type='radio' name='$fldname' id='$fldname$ctr' value='$image' $checked>";
 
         if( $image == "None" || $image == "Random" )
             $html .= $image;
         else
-            $html .= "<img alt='$image' title='$image' height='64' width='64' align='middle'
-                    src='" . get_bloginfo('template_directory') . "/images/$dir/$image' />";
+            $html .=
+            "
+                <label for='$fldname$ctr'>
+                    <img alt='$image' title='$image' height='64' width='64' align='middle'
+                        src='" . get_bloginfo('template_directory') . "/images/$dir/$image' />
+                </label>
+            ";
 
         $html .= "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
     }
@@ -364,6 +383,24 @@ function add_sidebars()
         'after_title' => "</p><span class='sbcontent'>",
         'after_widget' => "</span></div>",
     ));
+}
+
+//------------------------------------------------------------------------------
+function ac_admin_error($msg)
+{
+        print
+        "
+            <div
+                style='background-color: #aa4400;
+                        color: #ffffff;
+                        border: 1px solid #660000;
+                        padding: 3px 8px;
+                        width: 300px;
+                        margin-top: 30px;
+                        margin-left: 20px'>
+            $msg
+            </div>
+        ";
 }
 
 ?>

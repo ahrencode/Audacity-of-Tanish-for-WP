@@ -1,11 +1,5 @@
 <?php global $options; ?>
 
-<!--
-<div id='sidebartab'>
-    S<br />I<br />D<br />E<br />B<br />A<br />R
-</div>
--->
-
 <div id='bottombarbox'>
 
     <div class='bottombar'>

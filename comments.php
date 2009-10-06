@@ -29,10 +29,11 @@ if ( function_exists('wp_list_comments') ) :
             src='<?php print bloginfo('template_directory') . "/images/rssorange.png"; ?>'></a>
 
         <div id='commentsheader' class='heading'>
-            <img alt='' title='' align='middle'
+            <img alt='' title='' align='center'
                 src='<?php print get_bloginfo('template_url') . "/images/bubble_48.png"; ?>'>
             Read Comments and Respond
         </div>
+        <br />
 
         <i><?php comments_number('No Responses', 'One Response', '% Responses' );?></i>
 
@@ -196,6 +197,12 @@ if ( function_exists('wp_list_comments') ) :
 
         <?php endif; // commments open then show response box ?>
         </div> <!-- id=commentscontainer -->
+
+        <!--
+        <div id='commentsbotbar'>
+            &nbsp;
+        </div>
+        -->
 
     </div> <!-- comments -->
 

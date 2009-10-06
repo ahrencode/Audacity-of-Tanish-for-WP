@@ -14,6 +14,9 @@ $(document).ready
 
             $('#upgrademsie').fadeIn('slow');
             setTimeout(function() { $('#upgrademsie').fadeOut('slow'); }, 8000);
+
+            $('.postmetadata DIV:last-child').css('border-bottom', 'none');
+            $('.entry UL LI:last-child, .entry OL LI:last-child').css('border-bottom', 'none');
         }
 
         $('#indexpage .posttitlebar').click(showIndexPost);
