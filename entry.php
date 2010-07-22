@@ -52,6 +52,7 @@
 
                     <?php if( get_the_category() ) : ?>
                         <div id='postcats-<?php the_ID(); ?>' class='postcats'>
+                            <h4>Categories</h4>
                             <?php
                                 foreach((get_the_category()) as $cat)
                                 {
@@ -66,6 +67,7 @@
 
                     <?php if( get_the_tags() ) : ?>
                         <div id='posttags-<?php the_ID(); ?>' class='posttags'>
+                            <h4>Tags</h4>
                             <?php
                                 print
                                     get_the_tag_list(

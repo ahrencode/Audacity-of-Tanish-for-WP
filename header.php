@@ -44,6 +44,7 @@
 
     <script type="text/javascript" src="<?php print get_bloginfo('template_url').'/jquery-min.js'; ?>"></script>
     <script type="text/javascript" src="<?php print get_bloginfo('template_url').'/tanish.js'; ?>"></script>
+    <script type="text/javascript" src="<?php print get_bloginfo('template_url').'/jquery.dropshadow.js'; ?>"></script>
 
     <!-- load shortcode handlers -->
     <?php include_once("shortcodes.php"); ?>

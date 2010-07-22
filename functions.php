@@ -7,11 +7,11 @@ $options = get_option('tanish');
 
 # defaults
 if( ! isset($options['showauthors' ]) ) $options['showauthors' ] = 0;
-if( ! isset($options['expandfirst' ]) ) $options['expandfirst '] = 0;
-if( ! isset($options['showcredits' ]) ) $options['showcredits '] = 1;
+if( ! isset($options['expandfirst' ]) ) $options['expandfirst' ] = 0;
+if( ! isset($options['showcredits' ]) ) $options['showcredits' ] = 1;
 if( ! isset($options['hidecomments']) ) $options['hidecomments'] = 0;
-if( ! isset($options['mainbgimage' ]) ) $options['mainbgimage '] = 'None';
-if( ! isset($options['mainbgtile'  ]) ) $options['mainbgtile ' ] = 'None';
+if( ! isset($options['mainbgimage' ]) ) $options['mainbgimage' ] = 'None';
+if( ! isset($options['mainbgtile'  ]) ) $options['mainbgtile'  ] = 'None';
 if( ! isset($options['iewarn'      ]) ) $options['iewarn'      ] = 0;
 # end defaults
 

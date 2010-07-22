@@ -141,7 +141,7 @@ H6
 #description
 {
     float: left;
-    font-size: 12pt;
+    font-size: 11pt;
     padding: 3px 6px;
     margin-top: 8px;
 }
@@ -247,9 +247,9 @@ H6
 {
     clear: both;
     margin: 0 10%;
-    border: 3px solid #666666;
+    border: 0px solid #666666;
     border-left: 25px solid;
-    background-color: #181818;
+    background-color: #222222;
     padding: 30px;
     opacity: 0.96;
     filter: alpha(opacity = 96);
@@ -270,10 +270,15 @@ H6
 
 #indexpage .postselected
 {
-    margin: 20px -55px 20px -70px !important;
-    padding: 20px 30px;
-    border: 3px solid #bb2200;
+    margin: 20px -75px 20px -90px !important;
+    padding: 40px 60px;
+    border: 0px solid #bb2200;
     background-color: #111111;
+}
+
+#single .post
+{
+    padding: 20px 30px;
 }
 
 .posttitlebar
@@ -301,7 +306,6 @@ H6
     color: #ffffff;
     font-weight: bold;
 }
-
 */
 
 #indexpage .posttitlebar .heading
@@ -326,7 +330,7 @@ H6
 #single .post .avatar
 {
     display: block;
-    margin: 10px 20px 5px -90px;
+    margin: 10px 20px 5px -105px;
     background-color: #000000;
     border: 2px solid #bb2200;
     padding: 8px;
@@ -341,7 +345,7 @@ H6
 {
     line-height: 180%;
     font-size: 10pt;
-    padding: 5px 15px;
+    padding: 5px 0px;
     display: inline;
 }
 
@@ -434,6 +438,12 @@ H6
     border: 1px solid #666666;
     background-color: #222222;
     text-shadow: #000000 -2px -2px 4px;
+}
+
+.postmetadata H4
+{
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
 #single .postmetadata
@@ -538,19 +548,26 @@ H6
     bottom: 0;
     width: 100%;
     margin: 0px;
+    margin-top: 40px;
     padding: 0px;
     border: 0px none;
-    background-color: #000000;
+    /*
     opacity: 0.6;
-    filter: alpha(opacity = 60);
+    filter: alpha(opacity = 90);
+    */
 }
 
 #credits
 {
     float: right;
-    text-align: right;
-    margin: 0px;
-    padding: 3px 10px;
+    margin: 0px 60px 0px 0px;
+    font-family: "Trebuchet MS", sans-serif;
+    font-size: 8pt;
+    font-weight: normal;
+    background-color: #111111; /* also set using JS in tanish.js */
+    letter-spacing: 0.15em;
+    color: #ffffff;
+    padding: 3px 20px;
 }
 
 #comments
@@ -604,7 +621,7 @@ H6
     padding: 25px;
     overflow: auto;
     margin-bottom: 20px;
-    background-color: #222222;
+    background-color: #111111;
 }
 
 .bypostauthor > DIV
@@ -755,6 +772,44 @@ H6
 {
     float: left;
     margin-right: 10px;
+}
+
+/* CSS for the hints bubble from
+ * http://paulbakaus.com/2009/10/05/a-ux-pattern-reusable-hints-with-jquery
+ */
+#bubbletemplate
+{
+    display: none;
+}
+
+.bubble
+{
+    background: rgba(255,255,255,0.9); /* use rgba to let the bubble shine through a bit */
+    font-size: 1.2em;
+    padding: 10px 20px;
+    width: 100px; /* the bubble needs a certain width since it's absolutely positioned */
+    -moz-border-radius: 1em; /* give the bubble nice rounded corners */
+    -webkit-border-radius: 1em; /* ...in both gecko and webkit */
+    position: absolute;
+    z-index: 100; /* give it a high value here to lie on top of all other stuff */
+    opacity: 0; /* opacity must be set to zero at beginning (use filter: alpha(opacity=0) for IE) */
+    background-color: #bb2200;
+    color: #eeeeee;
+    font-family: "Trebuchet MS", sans-serif;
+    font-size: 9pt;
+    letter-spacing: 0.15em;
+}
+ 
+.bubble .pointer
+{
+    position: absolute;
+    bottom: -1em;
+    left: 2em;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-color: rgba(187,34,0,0.9) transparent transparent transparent; /* make sure only one border side is shown */
+    border-width: 1em 2em 0em 1em; /* this is called a border slant and creates the shape of the triangle */
 }
 
 /* required as per wordpress.org */

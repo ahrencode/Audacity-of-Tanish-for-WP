@@ -10,6 +10,7 @@
 
 // [qfgallery]
 // add if for option check for qfgallery activation
+add_shortcode('qfgallery', 'qfgallery_handler');
 
 ?>
 
@@ -43,9 +44,10 @@ function qfgallery_handler($atts, $content)
         (
             array
             (
-                'title' => '',
-                'scale' => '',
-                'float' => ''
+                'title'     => '',
+                'scale'     => '',
+                'float'     => '',
+                'orient'    => ''
             ),
             $atts
         )
@@ -90,6 +92,9 @@ function qfgallery_handler($atts, $content)
             </a>
             </div>
         ";
+
+        if( $orient == 'portrait' )
+            $newcontent .= "<br/>";
     }
 
     $newcontent .= "<br clear='all' /></div>\n";
@@ -97,7 +102,6 @@ function qfgallery_handler($atts, $content)
 
     return($newcontent);
 }
-add_shortcode('qfgallery', 'qfgallery_handler');
 
 ?>
 
@@ -120,3 +124,67 @@ $(document).ready(
 );
 
 </script>
+
+
+<?php
+
+// [faqinway]
+add_shortcode('faqinway', 'faqinway_handler');
+
+?>
+
+<?php
+
+function faqinway_handler($atts, $content)
+{
+    extract
+    (
+        shortcode_atts
+        (
+            array
+            (
+                'dummy' => ''
+            ),
+            $atts
+        )
+    );
+
+    $content = preg_replace("/\<br\s*\/?\>/", " ", $content);
+    $newcontent = "<div class='faqinwaycontainer'>\n";
+    foreach( explode("$$$", $content) as $qa )
+    {
+        if( ! (list($q, $a) = preg_split("/\@\@\@/", $qa, 2)) )
+            continue;
+
+        $newcontent .=
+        "
+            <div class='faqinwayqa'>
+                <div class='faqinwayq'>$q</div>
+                <div class='faqinwaya'>$a</div>
+            </div>
+        ";
+    }
+    $newcontent .= "</div>\n";
+
+    return($newcontent);
+}
+
+?>
+
+<script language='JavaScript'>
+
+jQuery(document).ready(
+    function()
+    {
+        jQuery('.faqinwayq').click(
+            function()
+            {
+                jQuery('.faqinwaya').hide();
+                jQuery(this).parent().find('.faqinwaya').show();
+            }
+        );
+    }
+);
+	
+</script>
+

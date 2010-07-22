@@ -35,3 +35,31 @@
     -moz-border-radius: 5px;
 }
 
+/*** faqinway ***/
+
+.faqinwaycontainer
+{
+    margin: 10px 0px;
+}
+
+.faqinwayqa
+{
+}
+
+.faqinwayq
+{
+    margin: 2px;
+    font-size: 11pt;
+    color: #ff8800;
+    cursor: pointer;
+}
+
+.faqinwaya
+{
+    margin: 0px;
+    display: none;
+    padding: 12px 15px;
+    border-left: 1px solid #ddcc00;
+    margin-bottom: 20px;
+}
+
