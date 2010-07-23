@@ -37,12 +37,6 @@ $(document).ready
         $('#single').fadeIn('slow');
         $('#single .entry').fadeIn(2000);
 
-        // some dropshadows
-        $('#title').dropShadow();
-        $('#indexpage').dropShadow();
-        $('#single').dropShadow();
-        $('.avatar').dropShadow();
-
         $('#indexpage').hint({msg: "Click on any post title below to reveal post", show: 'always'});
         $('#bottombarbox').hint({msg: "Click on section headers to reveal widget", show: 'hover'});
         $('#indexpage .postmetabox').hint({msg: "Click for post information", show: 'hover'});
@@ -61,8 +55,6 @@ function showIndexPost()
     if( actionspending > 0 )
         return;
 
-    $('#indexpage .dropShadow').hide();
-
     var curstatus = $(this).parent().find('.entry').css('display');
 
     // should .postselected be an id not a class? -- saving some jQuery CPU usage
@@ -72,7 +64,7 @@ function showIndexPost()
         $('.postselected .postmetabox').hide();   // hide the (I) icon by hiding the postmetabox
         $('.postselected .postmetadata').hide();
         $('.postselected .entry').slideUp('fast',
-                    function() { $('#indexpage').redrawShadow(); --actionspending; });
+                    function() { --actionspending; });
         $('.postselected').removeClass('postselected');
         $('#indexpage .post').css('opacity', '1.0');
         postselected = false;
@@ -86,13 +78,7 @@ function showIndexPost()
         postselected = true;
         $(this).parent().addClass('postselected');
         $(this).parent().find('.entry').slideDown('fast');
-        $(this).parent().find('.postmetabox').show('slow',
-                function()
-                {
-                    $('#indexpage_dropShadow').hide();
-                    $('.postselected').redrawShadow();
-                    --actionspending;
-                });
+        $(this).parent().find('.postmetabox').show('slow', function() { --actionspending; });
         $('#indexpage .post').filter(":not(.postselected)").css('opacity', '0.8');
         --actionspending;
     }

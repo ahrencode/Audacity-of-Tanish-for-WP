@@ -27,7 +27,7 @@ if ( function_exists('register_sidebar') )
 //-------------------------------------------------------------------------------
 function tanish_admin_menu()
 {
-    add_theme_page('Tanish Options', 'Tanish Options', 'edit_themes', "Audacity of Tanish", 'tanish_options');
+    add_theme_page('Tanish Options', 'Tanish Options', 'edit_themes', "AudacityofTanish", 'tanish_options');
 }
 
 //-------------------------------------------------------------------------------
