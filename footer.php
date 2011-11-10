@@ -4,6 +4,8 @@
 
 <?php get_sidebar(); ?>
 
+<div class='divclear'></div>
+
 <?php global $options; if( $options['showcredits'] == 1 ) : ?>
     <div id='creditsbox'>
         <div id='credits'>
@@ -13,6 +15,8 @@
         <br clear='all' />
     </div>
 <?php endif; ?>
+
+<div class='divclear'></div>
 
 <div id="bubbletemplate">
 <div class='bubble'>

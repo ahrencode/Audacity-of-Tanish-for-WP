@@ -44,7 +44,6 @@
 
     <script type="text/javascript" src="<?php print get_bloginfo('template_url').'/jquery-min.js'; ?>"></script>
     <script type="text/javascript" src="<?php print get_bloginfo('template_url').'/tanish.js'; ?>"></script>
-    <script type="text/javascript" src="<?php print get_bloginfo('template_url').'/jquery.dropshadow.js'; ?>"></script>
 
     <!-- load shortcode handlers -->
     <?php include_once("shortcodes.php"); ?>
@@ -54,7 +53,7 @@
     <style type='text/css'>
 
         <?php print bg_images_css("#bgtilediv", 'mainbgtile', 'bgtile', "repeat top left"); ?>
-        <?php print bg_images_css("#container", 'mainbgimage', 'bgimage', "no-repeat 80% 2%"); ?>
+        <?php print bg_images_css("#container", 'mainbgimage', 'bgimage', "no-repeat 80% 0%"); ?>
 
     </style>
 

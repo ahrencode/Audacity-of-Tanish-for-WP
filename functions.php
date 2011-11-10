@@ -302,6 +302,7 @@ function bg_images_css($selector, $optname, $imgdir, $pos_repeat)
     if( $image == 'None' )
         return;
 
+    $randidx = 0;
     if( $image == "Random" )
     {
         $images = preg_grep("/^\./", scandir(TEMPLATEPATH . "/images/" . $imgdir), PREG_GREP_INVERT);

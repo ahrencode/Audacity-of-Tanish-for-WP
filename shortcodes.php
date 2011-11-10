@@ -22,11 +22,6 @@ add_shortcode('qfgallery', 'qfgallery_handler');
 
 <script
     type="text/javascript"
-    src="<?php bloginfo('template_url'); ?>/jquery.fancybox/jquery.easing.1.3.js">
-</script>
-
-<script
-    type="text/javascript"
     src="<?php bloginfo('template_url'); ?>/jquery.fancybox/jquery.fancybox-1.2.1.js">
 </script>
 

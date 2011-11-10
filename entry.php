@@ -5,13 +5,19 @@
 
         <div class="post" id="post-<?php the_ID(); ?>">
 
-            <div class='posttitlebar'>
+            <div class='post-title-bar'>
+
+                <div class='post-title-prefix'>&bull;</div>
 
                 <div class='dateauthor'>
-                    <?php the_time('M jS, Y') ?> by <?php the_author() ?>
+                    <?php the_time('M jS, Y'); ?> by <?php the_author(); ?>
                 </div>
 
-                <div class='heading'><?php the_title(); ?></div>
+                <div class='heading'>
+                    <?php $title = get_the_title() or $title = "(no title)"; print $title; ?>
+                </div>
+
+                <div class='divclear'></div>
 
             </div>
 

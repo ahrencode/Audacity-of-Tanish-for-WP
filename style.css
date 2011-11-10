@@ -18,8 +18,8 @@ Tags: two-columns, flexible-width, theme-options, threaded-comments, black, dark
 HTML,
 BODY
 {
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     height: 100%;
     width: 100%;
     border-style: none;
@@ -47,10 +47,10 @@ IMG
 
 BLOCKQUOTE
 {
-    border-left: 2px solid #bb2200;
-    padding: 5px 0px 5px 15px;
-    margin: 0px;
-    margin-left: 15px;
+    border-left: 5px solid #bb2200;
+    padding: 10px 25px;
+    margin: 25px 20px;
+    margin-left: 40px;
     color: #dd9955;
 }
 
@@ -82,6 +82,7 @@ TD
 PRE,
 CODE
 {
+    padding: 2px 8px;
     color: #ffeeaa;
 	font-family: monospace;
 }
@@ -95,20 +96,41 @@ H5,
 H6
 {
     color: #5588ee;
-}
-
-.heading
-{
     font-family: Georgia, serif;
-    font-size: 18pt;
 }
 
-.postselected .posttitlebar .heading,
-#single .posttitlebar .heading,
+.divclear
+{
+    height: 1px;
+    clear: both;
+}
+
+#indexpage .post-title-bar .heading
+{
+    font-size: 13pt;
+    padding-left: 30px;
+}
+
+.heading,
+#indexpage .post-title-bar .heading:first-line
+{
+    font-size: 18pt;
+    padding-left: 0px;
+}
+
+.post-selected .post-title-bar .heading,
+.post-selected .post-title-bar .heading:first-line,
+#single .post-title-bar .heading,
 #comments > .heading,
 #respond > .heading
 {
-    font-size: 20pt;
+    font-size: 24pt !important;
+    padding-left: 0px !important;
+}
+
+#bgtilediv
+{
+    padding-top: 20px;
 }
 
 #container
@@ -165,7 +187,7 @@ H6
     background: #222222 url(images/darkhzgrad.png?v=2) repeat-x top left;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 20px;
+    margin-bottom: 80px;
     width: 900px;
     -webkit-border-bottom-left-radius: 15px;
     -webkit-border-bottom-right-radius: 15px;
@@ -186,7 +208,7 @@ H6
 {
     cursor: pointer;
     margin: 5px 0px;
-    padding-bottom: 3px;
+    padding-bottom: 5px;
     border-bottom: 1px solid #444444;
     font-size: 10pt;
 }
@@ -239,9 +261,9 @@ H6
     text-align: right;
 }
 
-#searchform > LABEL
+#searchform LABEL
 {
-    display: none;
+    display: none !important;
 }
 
 #single,
@@ -269,8 +291,6 @@ H6
 #indexpage
 {
     border-color: #bb2200;
-    /* revealed using jQuery gimmick in tanish.js */
-    display: none;
 }
 
 .post
@@ -279,12 +299,16 @@ H6
     clear: both;
 }
 
-#indexpage .postselected
+#indexpage .post-selected
 {
     margin: 20px -75px 20px -90px !important;
     padding: 40px 60px;
     border: 3px solid #bb2200;
+    border: 10px solid #aaa;
     background-color: #111111;
+    box-shadow: 0px 0px 5px #000000;
+    -webkit-box-shadow: 0px 0px 5px #000000;
+    -moz-box-shadow: 0px 0px 5px #000000;
 }
 
 #single .post
@@ -292,36 +316,43 @@ H6
     padding: 20px 30px;
 }
 
-.posttitlebar
+.post-title-bar
 {
-    padding: 3px 0px 6px 0px;
+    padding: 3px 0px;
     border-bottom: 1px solid #666666;
 }
 
-#indexpage .posttitlebar
+#indexpage .post-title-bar
 {
 	cursor: pointer;
 }
 
-/*
-#single .posttitlebar
-{
-    margin: -35px -60px 10px -80px;
-    padding: 10px 20px;
-    border: 3px solid #bb2200;
-    background-color: #111111;
-}
-
-#single .posttitlebar .heading
-{
-    color: #ffffff;
-    font-weight: bold;
-}
-*/
-
-#indexpage .posttitlebar .heading
+#indexpage .post-title-bar .heading
 {
     letter-spacing: 0.07em;
+}
+
+.post-title-prefix
+{
+    display: none;
+    float: left;
+    width: 10px;
+    padding: 0px;
+    margin-top: -2px;
+    color: #f90;
+    font-family: sans-serif;
+    font-size: 20pt;
+    text-align: center;
+}
+
+#indexpage .post-title-prefix
+{
+    display: block;
+}
+
+.post-selected .post-title-prefix
+{
+    display: none !important;
 }
 
 .dateauthor
@@ -358,9 +389,9 @@ H6
 .entry
 {
     line-height: 180%;
-    font-size: 10pt;
+    font-size: 11pt;
     padding: 5px 0px;
-    display: inline;
+    margin-top: 25px;
 }
 
 .entry,
@@ -369,13 +400,7 @@ H6
     color: #bbbbbb;
 }
 
-/*
- * TODO:
- * could make this just '.entry' once we are certain we want the jQuery
- * effect for #single .entry
- */
-#indexpage .entry,
-#single .entry
+#indexpage .entry
 {
     display: none;
 }
@@ -551,6 +576,7 @@ H6
 {
     padding: 5px 12px;
     background-color: #111111;
+    border: 1px solid #aaa;
     opacity: 0.7;
 }
 
@@ -591,7 +617,7 @@ H6
      * for top margin (possibly because we set margins for #comments above as well.
      */
     margin: 0px 14% 40px 14% !important;
-    padding: 20px 30px;
+    padding: 30px;
     border-left-color: #666666;
     border-top: 0px none;
     /*
@@ -627,20 +653,20 @@ H6
     list-style-type: none;
 }
 
-.comment > DIV,
-.pingback > DIV,
-.trackback > DIV
+.comment-body
 {
     clear: both;
-    padding: 25px;
     overflow: auto;
-    margin-bottom: 20px;
-    background-color: #111111;
+    margin-bottom: 30px;
+    padding: 30px;
+    padding-left: 140px;
+    background-color: #111;
 }
 
-.bypostauthor > DIV
+.bypostauthor > .comment-body
 {
     background-color: #001015;
+    border: 3px solid #b20;
 }
 
 .comment-author
@@ -650,15 +676,22 @@ H6
     width: 80px;
     min-height: 60px;
     margin: 0px;
-    margin-right: 25px;
-    padding: 5px 10px 5px 0px;
-    border-right: 2px solid #bb2200;
+    margin-left: -120px;
+    padding: 0;
+    border: 15px solid #111;
+    border-left-width: 0px;
+    border-right-color: #333;
 }
 
 .comment-author A,
 .comment-meta A
 {
-    color: #88ddff;
+    color: #48a;
+}
+
+.comment-meta
+{
+    text-align: right;
 }
 
 .comment-author IMG
@@ -688,7 +721,8 @@ H6
 .trackback P
 {
     overflow: auto;
-    line-height: 140%;
+    line-height: 180%;
+    color: #aaa;
     /* TODO: check why we had the below in the first place! IE? Firefox? */
     /* margin-left: 120px; */
 }
@@ -702,25 +736,22 @@ H6
     margin-left: 0px;
 }
 
-.comment .reply,
-.pingback .reply,
-.trackback .reply
+.reply
 {
     clear: both;
-    float: left;
-    margin-top: 10px;
+    margin-top: 20px;
+    padding: 0px;
+    padding-top: 20px;
+    border-top: 1px solid #333;
+    text-align: right;
 }
 
-.comment .reply
+.comment-reply-link
 {
+    color: #ffffff;
     padding: 4px 8px;
     background-color: #bb2200;
     font-size: 10pt;
-}
-
-.reply A
-{
-    color: #ffffff;
 }
 
 #respond
@@ -743,7 +774,6 @@ H6
 
 .cancel-comment-reply
 {
-    font-family: "Lucida Grande", sans-serif;
     margin-bottom: 4px;
     margin-left: 10px;
     font-size: 10pt;

@@ -22,7 +22,7 @@ $(document).ready
         $('#credits').mouseover( function() { $(this).css('background-color', '#bb2200'); } );
         $('#credits').mouseout( function() { $(this).css('background-color', '#111111'); } );
 
-        $('#indexpage .posttitlebar').click(showIndexPost);
+        $('#indexpage .post-title-bar').click(showIndexPost);
         $('#indexpage .postmetabutton').click(togglePostMeta);
 
         $('.sbtitle').click(toggleSBList);
@@ -33,10 +33,6 @@ $(document).ready
         $('#single .postmetadata').mouseenter( function() { $(this).fadeTo('fast', 1.0); } );
         $('#single .postmetadata').mouseleave( function() { $(this).fadeTo('slow', 0.4); } );
 
-        $('#indexpage').fadeIn('slow');
-        $('#single').fadeIn('slow');
-        $('#single .entry').fadeIn(2000);
-
         $('#indexpage').hint({msg: "Click on any post title below to reveal post", show: 'always'});
         $('#bottombarbox').hint({msg: "Click on section headers to reveal widget", show: 'hover'});
         $('#indexpage .postmetabox').hint({msg: "Click for post information", show: 'hover'});
@@ -45,50 +41,50 @@ $(document).ready
 );
  
 
-var postselected = false;
-var noposthints = false;
-var actionspending = 0;
+var post_selected = false;
+var no_post_hints = false;
+var actions_pending = 0;
 
 function showIndexPost()
 {
 
-    if( actionspending > 0 )
+    if( actions_pending > 0 )
         return;
 
-    var curstatus = $(this).parent().find('.entry').css('display');
+    var cur_status = $(this).parent().find('.entry').css('display');
 
-    // should .postselected be an id not a class? -- saving some jQuery CPU usage
-    if( postselected )
+    // should .post-selected be an id not a class? -- saving some jQuery CPU usage
+    if( post_selected )
     {
-        actionspending += 2;
-        $('.postselected .postmetabox').hide();   // hide the (I) icon by hiding the postmetabox
-        $('.postselected .postmetadata').hide();
-        $('.postselected .entry').slideUp('fast',
-                    function() { --actionspending; });
-        $('.postselected').removeClass('postselected');
+        actions_pending += 2;
+        $('.post-selected .postmetabox').hide();   // hide the (I) icon by hiding the postmetabox
+        $('.post-selected .postmetadata').hide();
+        $('.post-selected .entry').slideUp('fast',
+                    function() { --actions_pending; });
+        $('.post-selected').removeClass('post-selected');
         $('#indexpage .post').css('opacity', '1.0');
-        postselected = false;
-        --actionspending;
+        post_selected = false;
+        --actions_pending;
     }
 
-    if( curstatus != 'block' )
+    if( cur_status != 'block' )
     {
-        noposthints = true;
-        actionspending += 2;
-        postselected = true;
-        $(this).parent().addClass('postselected');
+        no_post_hints = true;
+        actions_pending += 2;
+        post_selected = true;
+        $(this).parent().addClass('post-selected');
         $(this).parent().find('.entry').slideDown('fast');
-        $(this).parent().find('.postmetabox').show('slow', function() { --actionspending; });
-        $('#indexpage .post').filter(":not(.postselected)").css('opacity', '0.8');
-        --actionspending;
+        $(this).parent().find('.postmetabox').show('slow', function() { --actions_pending; });
+        $('#indexpage .post').filter(":not(.post-selected)").css('opacity', '0.8');
+        --actions_pending;
     }
 }
 
 
 function togglePostMeta()
 {
-    var curstatus = $(this).parent().parent().find('.postmetadata').css('display');
-    if( curstatus != 'block' )
+    var cur_status = $(this).parent().parent().find('.postmetadata').css('display');
+    if( cur_status != 'block' )
         $(this).parent().find('.postmetadata').fadeIn('slow');
     else
         $(this).parent().find('.postmetadata').fadeOut('slow');
@@ -97,9 +93,9 @@ function togglePostMeta()
 
 function toggleSBList()
 {
-    var curstatus = $(this).parent().find('.sbcontent').css('display');
+    var cur_status = $(this).parent().find('.sbcontent').css('display');
     $('.sbcontent').slideUp();
-    if( curstatus != 'block' )
+    if( cur_status != 'block' )
     {
         $(this).parent().find('.sbcontent').slideDown('slow');
     }
